@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>车贷进件系统 - 工作台</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+.quick-menu { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; padding: 20px 16px 8px; }
+.quick-item { display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; }
+.quick-icon { width: 52px; height: 52px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+.quick-text { font-size: 11px; color: var(--text-secondary); font-weight: 500; text-align: center; }
+.todo-item { display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border-light); gap: 12px; cursor: pointer; }
+.todo-item:last-child { border-bottom: none; }
+.todo-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.todo-info { flex: 1; }
+.todo-name { font-size: 13px; font-weight: 600; color: var(--text-primary); margin-bottom: 2px; }
+.todo-sub { font-size: 11px; color: var(--text-tertiary); }
+.todo-time { font-size: 11px; color: var(--text-tertiary); white-space: nowrap; }
+.notice-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border-light); align-items: flex-start; }
+.notice-item:last-child { border-bottom: none; }
+.notice-dot-wrap { padding-top: 4px; }
+.notice-content { flex: 1; }
+.notice-title { font-size: 13px; color: var(--text-primary); font-weight: 500; margin-bottom: 4px; }
+.notice-time { font-size: 11px; color: var(--text-tertiary); }
+</style>
+</head>
+<body>
+<div class="device-showcase">
+
+  <!-- ===== 屏幕1: 工作台首页 ===== -->
+  <div class="device-group">
+    <div class="device-label">工作台</div>
+    <div class="phone-shell">
+      <div class="phone-screen">
+        <!-- 状态栏 -->
+        <div class="status-bar dark">
+          <span class="status-time">9:41</span>
+          <div class="status-icons">
+            <span>📶</span><span>🔋</span>
+          </div>
+        </div>
+
+        <!-- Hero区域 -->
+        <div class="hero-bg" style="padding-top:0;">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0 20px;">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <div class="avatar avatar-lg" style="background:linear-gradient(135deg,#36A3FF,#1677FF);">张</div>
+              <div>
+                <div style="color:rgba(255,255,255,0.7);font-size:12px;">早上好 👋</div>
+                <div style="color:#fff;font-size:16px;font-weight:700;margin-top:2px;">张业务员</div>
+              </div>
+            </div>
+            <div style="position:relative;">
+              <div style="width:40px;height:40px;background:rgba(255,255,255,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;">🔔</div>
+              <div class="num-badge">3</div>
+            </div>
+          </div>
+
+          <!-- 业绩卡片 -->
+          <div style="background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);border-radius:16px;padding:16px;border:1px solid rgba(255,255,255,0.2);">
+            <div style="color:rgba(255,255,255,0.7);font-size:12px;margin-bottom:10px;">本月业绩概览</div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+              <div style="text-align:center;">
+                <div style="color:#fff;font-size:22px;font-weight:800;">12</div>
+                <div style="color:rgba(255,255,255,0.6);font-size:10px;margin-top:2px;">进件总数</div>
+              </div>
+              <div style="text-align:center;border-left:1px solid rgba(255,255,255,0.2);border-right:1px solid rgba(255,255,255,0.2);">
+                <div style="color:#52C41A;font-size:22px;font-weight:800;">8</div>
+                <div style="color:rgba(255,255,255,0.6);font-size:10px;margin-top:2px;">审批通过</div>
+              </div>
+              <div style="text-align:center;">
+                <div style="color:#FAAD14;font-size:22px;font-weight:800;">320<span style="font-size:13px;">万</span></div>
+                <div style="color:rgba(255,255,255,0.6);font-size:10px;margin-top:2px;">放款金额</div>
+              </div>
+            </div>
+            <div style="margin-top:12px;">
+              <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+                <span style="color:rgba(255,255,255,0.7);font-size:10px;">月度目标完成度</span>
+                <span style="color:#fff;font-size:10px;font-weight:600;">67%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width:67%;background:linear-gradient(90deg,#52C41A,#73D13D);"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="screen-content">
+          <!-- 快捷功能 -->
+          <div style="background:#fff;margin-top:-20px;border-radius:20px 20px 0 0;position:relative;z-index:2;padding-bottom:8px;">
+            <div style="padding:16px 16px 0;">
+              <div class="section-title">快捷功能</div>
+            </div>
+            <div class="quick-menu">
+              <div class="quick-item">
+                <div class="quick-icon" style="background:#E8F4FF;">📋</div>
+                <div class="quick-text">新建进件</div>
+              </div>
+              <div class="quick-item">
+                <div class="quick-icon" style="background:#F6FFED;">👥</div>
+                <div class="quick-text">线索管理</div>
+              </div>
+              <div class="quick-item">
+                <div class="quick-icon" style="background:#FFF4EE;">🔍</div>
+                <div class="quick-text">扫码进件</div>
+              </div>
+              <div class="quick-item">
+                <div class="quick-icon" style="background:#FFF7E6;">📊</div>
+                <div class="quick-text">业绩报表</div>
+              </div>
+            </div>
+            <div class="quick-menu" style="padding-top:0;">
+              <div class="quick-item">
+                <div class="quick-icon" style="background:#F9F0FF;">✍️</div>
+                <div class="quick-text">电子签约</div>
+              </div>
+              <div class="quick-item">
+                <div class="quick-icon" style="background:#E6FFFB;">📍</div>
+                <div class="quick-text">GPS安装</div>
+              </div>
+              <div class="quick-item">
+                <div class="quick-icon" style="background:#FFF2F0;">⚠️</div>
+                <div class="quick-text">逾期提醒</div>
+              </div>
+              <div class="quick-item">
+                <div class="quick-icon" style="background:#F5F5F5;">⚙️</div>
+                <div class="quick-text">更多功能</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <!-- 待办事项 -->
+          <div style="background:#fff;padding:16px;">
+            <div class="section-title">
+              我的待办
+              <span class="badge badge-danger">5</span>
+            </div>
+            <div class="todo-item">
+              <div class="todo-dot" style="background:#FF4D4F;"></div>
+              <div class="todo-info">
+                <div class="todo-name">王小明 · 待提交审批</div>
+                <div class="todo-sub">二手车贷款 · 进件资料已完善</div>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;">
+                <span class="badge badge-danger">紧急</span>
+                <span class="todo-time">今天</span>
+              </div>
+            </div>
+            <div class="todo-item">
+              <div class="todo-dot" style="background:#FAAD14;"></div>
+              <div class="todo-info">
+                <div class="todo-name">李华 · 等待面签</div>
+                <div class="todo-sub">新车贷款 · 等待客户确认时间</div>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;">
+                <span class="badge badge-warning">待处理</span>
+                <span class="todo-time">今天</span>
+              </div>
+            </div>
+            <div class="todo-item">
+              <div class="todo-dot" style="background:#1677FF;"></div>
+              <div class="todo-info">
+                <div class="todo-name">赵雷 · GPS安装登记</div>
+                <div class="todo-sub">抵押车辆 · 需上传安装照片</div>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;">
+                <span class="badge badge-primary">进行中</span>
+                <span class="todo-time">昨天</span>
+              </div>
+            </div>
+            <div class="todo-item">
+              <div class="todo-dot" style="background:#52C41A;"></div>
+              <div class="todo-info">
+                <div class="todo-name">孙燕 · 放款结果查看</div>
+                <div class="todo-sub">二手车贷款 · 已放款成功</div>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;">
+                <span class="badge badge-success">已完成</span>
+                <span class="todo-time">昨天</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <!-- 系统公告 -->
+          <div style="background:#fff;padding:16px;">
+            <div class="section-title">系统通知 <span class="section-more">全部</span></div>
+            <div class="notice-item">
+              <div class="notice-dot-wrap">
+                <div style="width:8px;height:8px;border-radius:50%;background:var(--danger);"></div>
+              </div>
+              <div class="notice-content">
+                <div class="notice-title">【重要】征信查询接口升级维护通知</div>
+                <div class="notice-time">2026-04-01 09:00</div>
+              </div>
+            </div>
+            <div class="notice-item">
+              <div class="notice-dot-wrap">
+                <div style="width:8px;height:8px;border-radius:50%;background:var(--warning);"></div>
+              </div>
+              <div class="notice-content">
+                <div class="notice-title">新产品「乐享贷」上线，最高可贷80万</div>
+                <div class="notice-time">2026-03-30 14:20</div>
+              </div>
+            </div>
+            <div class="notice-item">
+              <div class="notice-dot-wrap">
+                <div style="width:8px;height:8px;border-radius:50%;background:var(--border);"></div>
+              </div>
+              <div class="notice-content">
+                <div class="notice-title">4月业务竞赛活动已开始，快来参与！</div>
+                <div class="notice-time">2026-03-28 10:00</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="height:20px;"></div>
+        </div>
+
+        <!-- TabBar -->
+        <div class="tab-bar">
+          <div class="tab-item active">
+            <div class="tab-icon">🏠</div>
+            <div class="tab-text" style="color:var(--primary);">工作台</div>
+          </div>
+          <div class="tab-item">
+            <div class="tab-icon">👥</div>
+            <div class="tab-text">线索</div>
+          </div>
+          <div class="tab-item">
+            <div style="width:54px;height:54px;background:linear-gradient(135deg,#1677FF,#0958D9);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:-24px;box-shadow:0 4px 16px rgba(22,119,255,0.4);">
+              <span style="font-size:26px;color:#fff;">+</span>
+            </div>
+            <div class="tab-text" style="margin-top:2px;">进件</div>
+          </div>
+          <div class="tab-item">
+            <div class="tab-icon">📊</div>
+            <div class="tab-text">统计</div>
+          </div>
+          <div class="tab-item">
+            <div class="tab-icon">👤</div>
+            <div class="tab-text">我的</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 屏幕2: 线索清单 ===== -->
+  <div class="device-group">
+    <div class="device-label">CRM · 线索清单</div>
+    <div class="phone-shell">
+      <div class="phone-screen">
+        <div class="status-bar white">
+          <span class="status-time" style="color:#333;">9:41</span>
+          <div class="status-icons"><span style="color:#333;">📶</span><span style="color:#333;">🔋</span></div>
+        </div>
+        <div class="nav-bar">
+          <div class="nav-title">线索管理</div>
+          <div style="display:flex;gap:12px;align-items:center;">
+            <span style="font-size:20px;cursor:pointer;">🔍</span>
+            <span style="font-size:20px;cursor:pointer;">➕</span>
+          </div>
+        </div>
+
+        <!-- 顶部统计 -->
+        <div style="background:#fff;padding:12px 16px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;border-bottom:1px solid var(--border-light);">
+          <div style="text-align:center;">
+            <div style="font-size:20px;font-weight:700;color:var(--primary);">47</div>
+            <div style="font-size:10px;color:var(--text-tertiary);">全部</div>
+          </div>
+          <div style="text-align:center;border-left:1px solid var(--border-light);">
+            <div style="font-size:20px;font-weight:700;color:var(--danger);">12</div>
+            <div style="font-size:10px;color:var(--text-tertiary);">待跟进</div>
+          </div>
+          <div style="text-align:center;border-left:1px solid var(--border-light);">
+            <div style="font-size:20px;font-weight:700;color:var(--warning);">8</div>
+            <div style="font-size:10px;color:var(--text-tertiary);">跟进中</div>
+          </div>
+          <div style="text-align:center;border-left:1px solid var(--border-light);">
+            <div style="font-size:20px;font-weight:700;color:var(--success);">27</div>
+            <div style="font-size:10px;color:var(--text-tertiary);">已转化</div>
+          </div>
+        </div>
+
+        <!-- 筛选Tab -->
+        <div class="filter-tabs" style="padding:10px 16px;">
+          <div class="filter-tab active">全部</div>
+          <div class="filter-tab">我的线索</div>
+          <div class="filter-tab">公共池</div>
+          <div class="filter-tab">外部导入</div>
+          <div class="filter-tab">今日新增</div>
+        </div>
+
+        <div class="screen-content" style="background:var(--bg-page);">
+          <!-- 线索列表 -->
+          <div style="padding:8px 12px;display:flex;flex-direction:column;gap:10px;">
+
+            <!-- 线索卡片1 -->
+            <div class="card" style="padding:14px;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <div class="avatar avatar-md" style="background:linear-gradient(135deg,#FF6B35,#E84D0B);">王</div>
+                  <div>
+                    <div style="font-size:15px;font-weight:700;color:var(--text-primary);">王小明</div>
+                    <div style="font-size:12px;color:var(--text-tertiary);margin-top:1px;">📞 138****5678</div>
+                  </div>
+                </div>
+                <span class="badge badge-danger">待跟进</span>
+              </div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">
+                <span class="badge badge-orange">二手车</span>
+                <span class="badge badge-gray">预算30万</span>
+                <span class="badge badge-gray">上海</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:11px;color:var(--text-tertiary);">来源：线索分配 · 今天 09:20</span>
+                <div style="display:flex;gap:8px;">
+                  <button class="btn btn-ghost btn-sm">📞 拨打</button>
+                  <button class="btn btn-primary btn-sm">跟进</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 线索卡片2 -->
+            <div class="card" style="padding:14px;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <div class="avatar avatar-md" style="background:linear-gradient(135deg,#722ED1,#531DAB);">李</div>
+                  <div>
+                    <div style="font-size:15px;font-weight:700;color:var(--text-primary);">李华</div>
+                    <div style="font-size:12px;color:var(--text-tertiary);margin-top:1px;">📞 186****9012</div>
+                  </div>
+                </div>
+                <span class="badge badge-warning">跟进中</span>
+              </div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">
+                <span class="badge badge-primary">新车</span>
+                <span class="badge badge-gray">预算15万</span>
+                <span class="badge badge-gray">北京</span>
+              </div>
+              <div style="background:var(--bg-section);border-radius:8px;padding:8px;margin-bottom:10px;">
+                <div style="font-size:11px;color:var(--text-tertiary);">最新跟进记录</div>
+                <div style="font-size:12px;color:var(--text-primary);margin-top:4px;">客户表示有购车意向，约好本周六上门看车...</div>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:11px;color:var(--text-tertiary);">上次跟进：昨天 15:30</span>
+                <div style="display:flex;gap:8px;">
+                  <button class="btn btn-ghost btn-sm">记录</button>
+                  <button class="btn btn-primary btn-sm">转进件</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 线索卡片3 -->
+            <div class="card" style="padding:14px;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <div class="avatar avatar-md" style="background:linear-gradient(135deg,#13C2C2,#08979C);">陈</div>
+                  <div>
+                    <div style="font-size:15px;font-weight:700;color:var(--text-primary);">陈思思</div>
+                    <div style="font-size:12px;color:var(--text-tertiary);margin-top:1px;">📞 139****3456</div>
+                  </div>
+                </div>
+                <span class="badge badge-success">已转化</span>
+              </div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">
+                <span class="badge badge-teal">抵押贷款</span>
+                <span class="badge badge-gray">金额50万</span>
+                <span class="badge badge-gray">深圳</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:11px;color:var(--text-tertiary);">来源：自建线索 · 2026-03-28</span>
+                <div style="display:flex;gap:8px;">
+                  <button class="btn btn-ghost btn-sm">查看进件</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 线索卡片4 -->
+            <div class="card" style="padding:14px;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <div class="avatar avatar-md" style="background:linear-gradient(135deg,#52C41A,#389E0D);">刘</div>
+                  <div>
+                    <div style="font-size:15px;font-weight:700;color:var(--text-primary);">刘大强</div>
+                    <div style="font-size:12px;color:var(--text-tertiary);margin-top:1px;">📞 158****7890</div>
+                  </div>
+                </div>
+                <span class="badge badge-danger">待跟进</span>
+              </div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">
+                <span class="badge badge-orange">二手车</span>
+                <span class="badge badge-gray">预算20万</span>
+                <span class="badge badge-gray">广州</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:11px;color:var(--text-tertiary);">来源：任务池抢单 · 今天 08:45</span>
+                <div style="display:flex;gap:8px;">
+                  <button class="btn btn-ghost btn-sm">📞 拨打</button>
+                  <button class="btn btn-primary btn-sm">跟进</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div style="height:20px;"></div>
+        </div>
+
+        <div class="tab-bar">
+          <div class="tab-item"><div class="tab-icon">🏠</div><div class="tab-text">工作台</div></div>
+          <div class="tab-item active"><div class="tab-icon">👥</div><div class="tab-text" style="color:var(--primary);">线索</div></div>
+          <div class="tab-item">
+            <div style="width:54px;height:54px;background:linear-gradient(135deg,#1677FF,#0958D9);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:-24px;box-shadow:0 4px 16px rgba(22,119,255,0.4);">
+              <span style="font-size:26px;color:#fff;">+</span>
+            </div>
+            <div class="tab-text" style="margin-top:2px;">进件</div>
+          </div>
+          <div class="tab-item"><div class="tab-icon">📊</div><div class="tab-text">统计</div></div>
+          <div class="tab-item"><div class="tab-icon">👤</div><div class="tab-text">我的</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 屏幕3: 线索详情 ===== -->
+  <div class="device-group">
+    <div class="device-label">CRM · 线索详情</div>
+    <div class="phone-shell">
+      <div class="phone-screen">
+        <div class="status-bar white">
+          <span class="status-time" style="color:#333;">9:41</span>
+          <div class="status-icons"><span style="color:#333;">📶</span><span style="color:#333;">🔋</span></div>
+        </div>
+        <div class="nav-bar">
+          <div class="nav-back">←</div>
+          <div class="nav-title">线索详情</div>
+          <div class="nav-action">编辑</div>
+        </div>
+        <div class="screen-content">
+          <!-- 客户信息卡 -->
+          <div style="background:linear-gradient(135deg,#1677FF,#0958D9);padding:20px 16px;">
+            <div style="display:flex;align-items:center;gap:14px;">
+              <div class="avatar avatar-lg" style="background:rgba(255,255,255,0.2);border:2px solid rgba(255,255,255,0.4);">王</div>
+              <div style="flex:1;">
+                <div style="color:#fff;font-size:20px;font-weight:800;">王小明</div>
+                <div style="color:rgba(255,255,255,0.7);font-size:13px;margin-top:4px;">📞 138-8888-5678</div>
+                <div style="margin-top:8px;"><span class="badge" style="background:rgba(255,255,255,0.2);color:#fff;">待跟进</span></div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                <div style="width:44px;height:44px;background:rgba(255,255,255,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;">📞</div>
+                <div style="width:44px;height:44px;background:rgba(255,255,255,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;">💬</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 基本信息 -->
+          <div style="background:#fff;padding:16px;margin-bottom:8px;">
+            <div class="section-title">基本信息</div>
+            <div class="data-row"><span class="data-key">线索来源</span><span class="data-val">系统分配</span></div>
+            <div class="data-row"><span class="data-key">贷款类型</span><span class="data-val primary">二手车贷款</span></div>
+            <div class="data-row"><span class="data-key">意向金额</span><span class="data-val" style="color:var(--orange);font-weight:700;">¥ 280,000</span></div>
+            <div class="data-row"><span class="data-key">意向城市</span><span class="data-val">上海</span></div>
+            <div class="data-row"><span class="data-key">车辆品牌</span><span class="data-val">宝马 3系</span></div>
+            <div class="data-row"><span class="data-key">创建时间</span><span class="data-val">2026-04-01 09:20</span></div>
+            <div class="data-row" style="border-bottom:none;"><span class="data-key">负责人</span><span class="data-val">张业务员</span></div>
+          </div>
+
+          <!-- 跟进记录 -->
+          <div style="background:#fff;padding:16px;margin-bottom:8px;">
+            <div class="section-title">跟进记录 <span class="badge badge-primary" style="font-size:11px;">3条</span></div>
+            <div style="position:relative;padding-left:20px;">
+              <div style="position:absolute;left:7px;top:0;bottom:0;width:2px;background:var(--border-light);"></div>
+
+              <div style="position:relative;margin-bottom:16px;">
+                <div style="position:absolute;left:-16px;top:3px;width:10px;height:10px;border-radius:50%;background:var(--primary);border:2px solid #fff;box-shadow:0 0 0 2px var(--primary);"></div>
+                <div style="font-size:11px;color:var(--text-tertiary);margin-bottom:4px;">今天 09:30</div>
+                <div style="background:var(--primary-light);border-radius:8px;padding:10px;">
+                  <div style="font-size:13px;color:var(--text-primary);">电话联系客户，客户表示近期有购车计划，预算在25-30万之间，倾向宝马3系或奥迪A4。</div>
+                  <div style="font-size:11px;color:var(--primary);margin-top:4px;">📞 电话沟通 · 时长 5分钟</div>
+                </div>
+              </div>
+
+              <div style="position:relative;margin-bottom:16px;">
+                <div style="position:absolute;left:-16px;top:3px;width:10px;height:10px;border-radius:50%;background:var(--warning);border:2px solid #fff;box-shadow:0 0 0 2px var(--warning);"></div>
+                <div style="font-size:11px;color:var(--text-tertiary);margin-bottom:4px;">昨天 14:20</div>
+                <div style="background:var(--warning-light);border-radius:8px;padding:10px;">
+                  <div style="font-size:13px;color:var(--text-primary);">首次外呼，客户接听，初步了解到客户有购车意向。</div>
+                  <div style="font-size:11px;color:var(--warning);margin-top:4px;">📞 电话沟通 · 时长 2分钟</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 操作按钮 -->
+          <div style="background:#fff;padding:16px;margin-bottom:8px;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+              <button class="btn btn-ghost btn-md" style="height:44px;border-radius:10px;">添加跟进记录</button>
+              <button class="btn btn-primary btn-md" style="height:44px;border-radius:10px;">转化为进件 →</button>
+            </div>
+          </div>
+          <div style="height:20px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "car-loan-ui",
+  "version": "1.0.0",
+  "description": "车贷小程序进件系统高保真UI设计稿",
+  "scripts": {
+    "preview": "python3 -m http.server 8000"
+  },
+  "keywords": ["car-loan", "ui-design", "prototype"],
+  "author": "",
+  "license": "MIT"
+}

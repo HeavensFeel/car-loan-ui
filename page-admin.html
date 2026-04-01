@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>车贷进件系统 - 管理功能</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="device-showcase">
+
+  <!-- ===== 屏幕17: 机构管理 ===== -->
+  <div class="device-group">
+    <div class="device-label">管理 · 机构管理</div>
+    <div class="phone-shell">
+      <div class="phone-screen">
+        <div class="status-bar white">
+          <span class="status-time" style="color:#333;">9:41</span>
+          <div class="status-icons"><span style="color:#333;">📶</span><span style="color:#333;">🔋</span></div>
+        </div>
+        <div class="nav-bar">
+          <div class="nav-back">←</div>
+          <div class="nav-title">机构管理</div>
+          <div class="nav-action">新增</div>
+        </div>
+        <div class="screen-content">
+          <div style="padding:16px;">
+            <!-- 机构列表 -->
+            <div style="display:flex;flex-direction:column;gap:10px;">
+
+              <!-- 机构卡片1 -->
+              <div class="card" style="padding:14px;">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+                  <div style="display:flex;align-items:center;gap:10px;">
+                    <div class="icon-wrap-sm" style="background:var(--primary-light);">🏢</div>
+                    <div>
+                      <div style="font-size:14px;font-weight:700;color:var(--text-primary);">上海浦东分行</div>
+                      <div style="font-size:11px;color:var(--text-tertiary);">Pudong Branch</div>
+                    </div>
+                  </div>
+                  <span class="badge badge-success">启用</span>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
+                  <div>
+                    <div style="font-size:11px;color:var(--text-tertiary);">员工数</div>
+                    <div style="font-size:16px;font-weight:700;color:var(--primary);">15</div>
+                  </div>
+                  <div>
+                    <div style="font-size:11px;color:var(--text-tertiary);">本月进件</div>
+                    <div style="font-size:16px;font-weight:700;color:var(--success);">28</div>
+                  </div>
+                </div>
+                <div style="font-size:11px;color:var(--text-tertiary);margin-bottom:10px;">
+                  📍 上海市浦东新区陆家嘴环路1000号
+                </div>
+                <div style="display:flex;gap:8px;">
+                  <button class="btn btn-ghost btn-sm" style="flex:1;">详情</button>
+                  <button class="btn btn-ghost btn-sm" style="flex:1;">编辑</button>
+                </div>
+              </div>
+
+              <!-- 机构卡片2 -->
+              <div class="card" style="padding:14px;">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+                  <div style="display:flex;align-items:center;gap:10px;">
+                    <div class="icon-wrap-sm" style="background:var(--success-light);">🏢</div>
+                    <div>
+                      <div style="font-size:14px;font-weight:700;color:var(--text-primary);">北京朝阳支行</div>
+                      <div style="font-size:11px;color:var(--text-tertiary);">Chaoyang Branch</div>
+                    </div>
+                  </div>
+                  <span class="badge badge-success">启用</span>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
+                  <div>
+                    <div style="font-size:11px;color:var(--text-tertiary);">员工数</div>
+                    <div style="font-size:16px;font-weight:700;color:var(--primary);">12</div>
+                  </div>
+                  <div>
+                    <div style="font-size:11px;color:var(--text-tertiary);">本月进件</div>
+                    <div style="font-size:16px;font-weight:700;color:var(--success);">22</div>
+                  </div>
+                </div>
+                <div style="font-size:11px;color:var(--text-tertiary);margin-bottom:10px;">
+                  📍 北京市朝阳区建国路88号
+                </div>
+                <div style="display:flex;gap:8px;">
+                  <button class="btn btn-ghost btn-sm" style="flex:1;">详情</button>
+                  <button class="btn btn-ghost btn-sm" style="flex:1;">编辑</button>
+                </div>
+              </div>
+
+              <!-- 机构卡片3 -->
+              <div class="card" style="padding:14px;">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+                  <div style="display:flex;align-items:center;gap:10px;">
+                    <div class="icon-wrap-sm" style="background:var(--warning-light);">🏢</div>
+                    <div>
+                      <div style="font-size:14px;font-weight:700;color:var(--text-primary);">广州天河分行</div>
+                      <div style="font-size:11px;color:var(--text-tertiary);">Tianhe Branch</div>
+                    </div>
+                  </div>
+                  <span class="badge badge-gray">停用</span>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
+                  <div>
+                    <div style="font-size:11px;color:var(--text-tertiary);">员工数</div>
+                    <div style="font-size:16px;font-weight:700;color:var(--text-tertiary);">8</div>
+                  </div>
+                  <div>
+                    <div style="font-size:11px;color:var(--text-tertiary);">本月进件</div>
+                    <div style="font-size:16px;font-weight:700;color:var(--text-tertiary);">0</div>
+                  </div>
+                </div>
+                <div style="font-size:11px;color:var(--text-tertiary);margin-bottom:10px;">
+                  📍 广州市天河区珠江新城
+                </div>
+                <div style="display:flex;gap:8px;">
+                  <button class="btn btn-ghost btn-sm" style="flex:1;">详情</button>
+                  <button class="btn btn-primary btn-sm" style="flex:1;">启用</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div style="height:20px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 屏幕18: 账号管理 ===== -->
+  <div class="device-group">
+    <div class="device-label">管理 · 账号管理</div>
+    <div class="phone-shell">
+      <div class="phone-screen">
+        <div class="status-bar white">
+          <span class="status-time" style="color:#333;">9:41</span>
+          <div class="status-icons"><span style="color:#333;">📶</span><span style="color:#333;">🔋</span></div>
+        </div>
+        <div class="nav-bar">
+          <div class="nav-back">←</div>
+          <div class="nav-title">账号管理</div>
+          <div class="nav-action">新增账号</div>
+        </div>
+        <div class="screen-content">
+          <!-- 搜索栏 -->
+          <div style="padding:12px 16px;background:#fff;">
+            <div class="search-bar">
+              <span>🔍</span>
+              <input-mock>搜索员工姓名/工号</input-mock>
+            </div>
+          </div>
+
+          <div style="padding:12px 16px;display:flex;flex-direction:column;gap:10px;">
+
+            <!-- 账号卡片1 -->
+            <div class="card" style="padding:14px;">
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+                <div class="avatar avatar-md" style="background:linear-gradient(135deg,#1677FF,#0958D9);">张</div>
+                <div style="flex:1;">
+                  <div style="font-size:14px;font-weight:700;color:var(--text-primary);">张业务员</div>
+                  <div style="font-size:11px;color:var(--text-tertiary);">工号：ZB001 · 上海浦东分行</div>
+                </div>
+                <span class="badge badge-success">启用</span>
+              </div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">
+                <span class="badge badge-primary">业务员</span>
+                <span class="badge badge-gray">进件权限</span>
+                <span class="badge badge-gray">查看报表</span>
+              </div>
+              <div class="data-row" style="border-bottom:none;">
+                <span class="data-key">最后登录</span><span class="data-val">今天 09:20</span>
+              </div>
+            </div>
+
+            <!-- 账号卡片2 -->
+            <div class="card" style="padding:14px;">
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+                <div class="avatar avatar-md" style="background:linear-gradient(135deg,#52C41A,#389E0D);">王</div>
+                <div style="flex:1;">
+                  <div style="font-size:14px;font-weight:700;color:var(--text-primary);">王初审员</div>
+                  <div style="font-size:11px;color:var(--text-tertiary);">工号：ZB002 · 上海浦东分行</div>
+                </div>
+                <span class="badge badge-success">启用</span>
+              </div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">
+                <span class="badge badge-success">初审员</span>
+                <span class="badge badge-gray">审批权限</span>
+              </div>
+              <div class="data-row" style="border-bottom:none;">
+                <span class="data-key">最后登录</span><span class="data-val">今天 10:45</span>
+              </div>
+            </div>
+
+            <!-- 账号卡片3 -->
+            <div class="card" style="padding:14px;">
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+                <div class="avatar avatar-md" style="background:linear-gradient(135deg,#FAAD14,#D4B106);">李</div>
+                <div style="flex:1;">
+                  <div style="font-size:14px;font-weight:700;color:var(--text-primary);">李风控</div>
+                  <div style="font-size:11px;color:var(--text-tertiary);">工号：ZB003 · 总部风控部</div>
+                </div>
+                <span class="badge badge-success">启用</span>
+              </div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">
+                <span class="badge badge-warning">风控</span>
+                <span class="badge badge-gray">终审权限</span>
+                <span class="badge badge-gray">数据查看</span>
+              </div>
+              <div class="data-row" style="border-bottom:none;">
+                <span class="data-key">最后登录</span><span class="data-val">昨天 16:30</span>
+              </div>
+            </div>
+
+            <!-- 账号卡片4 -->
+            <div class="card" style="padding:14px;opacity:0.6;">
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+                <div class="avatar avatar-md" style="background:linear-gradient(135deg,#8C8C8C,#595959);">赵</div>
+                <div style="flex:1;">
+                  <div style="font-size:14px;font-weight:700;color:var(--text-primary);">赵实习生</div>
+                  <div style="font-size:11px;color:var(--text-tertiary);">工号：ZB004 · 上海浦东分行</div>
+                </div>
+                <span class="badge badge-gray">停用</span>
+              </div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">
+                <span class="badge badge-gray">实习生</span>
+                <span class="badge badge-gray">仅查看</span>
+              </div>
+              <div class="data-row" style="border-bottom:none;">
+                <span class="data-key">最后登录</span><span class="data-val">30天前</span>
+              </div>
+            </div>
+
+          </div>
+          <div style="height:20px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 屏幕19: 产品管理 ===== -->
+  <div class="device-group">
+    <div class="device-label">管理 · 产品管理</div>
+    <div class="phone-shell">
+      <div class="phone-screen">
+        <div class="status-bar white">
+          <span class="status-time" style="color:#333;">9:41</span>
+          <div class="status-icons"><span style="color:#333;">📶</span><span style="color:#333;">🔋</span></div>
+        </div>
+        <div class="nav-bar">
+          <div class="nav-back">←</div>
+          <div class="nav-title">产品管理</div>
+          <div class="nav-action">新增产品</div>
+        </div>
+        <div class="screen-content">
+          <div style="padding:16px;display:flex;flex-direction:column;gap:12px;">
+
+            <!-- 产品卡片1 -->
+            <div class="card" style="padding:14px;border:1.5px solid var(--primary);">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <div class="icon-wrap-sm" style="background:var(--primary);">⭐</div>
+                  <div style="font-size:15px;font-weight:700;color:var(--primary);">乐享贷·车主专享</div>
+                </div>
+                <span class="badge badge-orange">热门</span>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;">
+                <div style="background:var(--primary-light);border-radius:8px;padding:8px;text-align:center;">
+                  <div style="font-size:11px;color:var(--text-tertiary);">额度范围</div>
+                  <div style="font-size:14px;font-weight:700;color:var(--primary);">5-80万</div>
+                </div>
+                <div style="background:var(--success-light);border-radius:8px;padding:8px;text-align:center;">
+                  <div style="font-size:11px;color:var(--text-tertiary);">年利率起</div>
+                  <div style="font-size:14px;font-weight:700;color:var(--success);">3.8%</div>
+                </div>
+              </div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">
+                <span class="badge badge-gray">新车/二手车</span>
+                <span class="badge badge-gray">6-36期</span>
+                <span class="badge badge-gray">抵押贷款</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:11px;color:var(--text-tertiary);">本月使用：128笔</span>
+                <div style="display:flex;gap:6px;">
+                  <button class="btn btn-ghost btn-sm">编辑</button>
+                  <button class="btn btn-primary btn-sm">管理</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 产品卡片2 -->
+            <div class="card" style="padding:14px;">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <div class="icon-wrap-sm" style="background:var(--success);">⚡</div>
+                  <div style="font-size:15px;font-weight:700;color:var(--text-primary);">闪贷·快速放款</div>
+                </div>
+                <span class="badge badge-primary">快速</span>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;">
+                <div style="background:var(--bg-section);border-radius:8px;padding:8px;text-align:center;">
+                  <div style="font-size:11px;color:var(--text-tertiary);">额度范围</div>
+                  <div style="font-size:14px;font-weight:700;color:var(--text-primary);">3-50万</div>
+                </div>
+                <div style="background:var(--bg-section);border-radius:8px;padding:8px;text-align:center;">
+                  <div style="font-size:11px;color:var(--text-tertiary);">年利率起</div>
+                  <div style="font-size:14px;font-weight:700;color:var(--text-primary);">4.2%</div>
+                </div>
+              </div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">
+                <span class="badge badge-gray">新车</span>
+                <span class="badge badge-gray">6-24期</span>
+                <span class="badge badge-gray">最快当天放款</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:11px;color:var(--text-tertiary);">本月使用：45笔</span>
+                <div style="display:flex;gap:6px;">
+                  <button class="btn btn-ghost btn-sm">编辑</button>
+                  <button class="btn btn-primary btn-sm">管理</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 产品卡片3 -->
+            <div class="card" style="padding:14px;">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <div class="icon-wrap-sm" style="background:var(--purple);">💎</div>
+                  <div style="font-size:15px;font-weight:700;color:var(--text-primary);">尊享贷·高净值</div>
+                </div>
+                <span class="badge badge-purple">高端</span>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;">
+                <div style="background:var(--bg-section);border-radius:8px;padding:8px;text-align:center;">
+                  <div style="font-size:11px;color:var(--text-tertiary);">额度范围</div>
+                  <div style="font-size:14px;font-weight:700;color:var(--text-primary);">50-150万</div>
+                </div>
+                <div style="background:var(--bg-section);border-radius:8px;padding:8px;text-align:center;">
+                  <div style="font-size:11px;color:var(--text-tertiary);">年利率起</div>
+                  <div style="font-size:14px;font-weight:700;color:var(--text-primary);">3.5%</div>
+                </div>
+              </div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">
+                <span class="badge badge-gray">豪车/豪华车</span>
+                <span class="badge badge-gray">12-48期</span>
+                <span class="badge badge-gray">VIP服务</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:11px;color:var(--text-tertiary);">本月使用：18笔</span>
+                <div style="display:flex;gap:6px;">
+                  <button class="btn btn-ghost btn-sm">编辑</button>
+                  <button class="btn btn-primary btn-sm">管理</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 产品卡片4（停用） -->
+            <div class="card" style="padding:14px;opacity:0.6;">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <div class="icon-wrap-sm" style="background:var(--text-tertiary);">🚗</div>
+                  <div style="font-size:15px;font-weight:700;color:var(--text-primary);">二手车快贷</div>
+                </div>
+                <span class="badge badge-gray">已停用</span>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;">
+                <div style="background:var(--bg-section);border-radius:8px;padding:8px;text-align:center;">
+                  <div style="font-size:11px;color:var(--text-tertiary);">额度范围</div>
+                  <div style="font-size:14px;font-weight:700;color:var(--text-tertiary);">5-30万</div>
+                </div>
+                <div style="background:var(--bg-section);border-radius:8px;padding:8px;text-align:center;">
+                  <div style="font-size:11px;color:var(--text-tertiary);">年利率起</div>
+                  <div style="font-size:14px;font-weight:700;color:var(--text-tertiary);">4.5%</div>
+                </div>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:11px;color:var(--text-tertiary);">停用原因：产品升级</span>
+                <button class="btn btn-primary btn-sm">启用</button>
+              </div>
+            </div>
+
+          </div>
+          <div style="height:20px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 屏幕20: 个人中心 ===== -->
+  <div class="device-group">
+    <div class="device-label">我的 · 个人中心</div>
+    <div class="phone-shell">
+      <div class="phone-screen">
+        <div class="status-bar white">
+          <span class="status-time" style="color:#333;">9:41</span>
+          <div class="status-icons"><span style="color:#333;">📶</span><span style="color:#333;">🔋</span></div>
+        </div>
+        <div class="screen-content">
+          <!-- 用户信息 -->
+          <div style="background:linear-gradient(135deg,#1677FF,#0958D9);padding:30px 20px;">
+            <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+              <div class="avatar avatar-lg" style="background:rgba(255,255,255,0.2);border:3px solid rgba(255,255,255,0.4);">张</div>
+              <div>
+                <div style="color:#fff;font-size:20px;font-weight:800;">张业务员</div>
+                <div style="color:rgba(255,255,255,0.7);font-size:13px;margin-top:4px;">工号：ZB001</div>
+                <div style="color:rgba(255,255,255,0.7);font-size:13px;margin-top:2px;">上海浦东分行 · 业务员</div>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+              <div style="background:rgba(255,255,255,0.15);border-radius:10px;padding:12px;text-align:center;">
+                <div style="color:#fff;font-size:20px;font-weight:700;">12</div>
+                <div style="color:rgba(255,255,255,0.7);font-size:11px;margin-top:2px;">本月进件</div>
+              </div>
+              <div style="background:rgba(255,255,255,0.15);border-radius:10px;padding:12px;text-align:center;">
+                <div style="color:#fff;font-size:20px;font-weight:700;">320</div>
+                <div style="color:rgba(255,255,255,0.7);font-size:11px;margin-top:2px;">放款万</div>
+              </div>
+              <div style="background:rgba(255,255,255,0.15);border-radius:10px;padding:12px;text-align:center;">
+                <div style="color:#fff;font-size:20px;font-weight:700;">67%</div>
+                <div style="color:rgba(255,255,255,0.7);font-size:11px;margin-top:2px;">通过率</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="padding:12px 16px;display:flex;flex-direction:column;gap:8px;">
+
+            <!-- 菜单项 -->
+            <div class="card" style="padding:4px;">
+              <div class="list-item" style="padding:12px;">
+                <div style="width:40px;height:40px;background:var(--primary-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">📋</div>
+                <div style="flex:1;">
+                  <div style="font-size:14px;font-weight:600;color:var(--text-primary);">我的进件</div>
+                  <div style="font-size:11px;color:var(--text-tertiary);">查看所有进件记录</div>
+                </div>
+                <span style="font-size:14px;color:var(--text-tertiary);">›</span>
+              </div>
+              <div class="list-item" style="padding:12px;">
+                <div style="width:40px;height:40px;background:var(--success-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">👥</div>
+                <div style="flex:1;">
+                  <div style="font-size:14px;font-weight:600;color:var(--text-primary);">我的线索</div>
+                  <div style="font-size:11px;color:var(--text-tertiary);">47条线索</div>
+                </div>
+                <span style="font-size:14px;color:var(--text-tertiary);">›</span>
+              </div>
+              <div class="list-item" style="padding:12px;">
+                <div style="width:40px;height:40px;background:var(--warning-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">📊</div>
+                <div style="flex:1;">
+                  <div style="font-size:14px;font-weight:600;color:var(--text-primary);">业绩报表</div>
+                  <div style="font-size:11px;color:var(--text-tertiary);">查看个人业绩数据</div>
+                </div>
+                <span style="font-size:14px;color:var(--text-tertiary);">›</span>
+              </div>
+              <div class="list-item" style="padding:12px;border-bottom:none;">
+                <div style="width:40px;height:40px;background:var(--orange-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">💰</div>
+                <div style="flex:1;">
+                  <div style="font-size:14px;font-weight:600;color:var(--text-primary);">提成佣金</div>
+                  <div style="font-size:11px;color:var(--text-tertiary);">本月已结算 ¥12,500</div>
+                </div>
+                <span style="font-size:14px;color:var(--text-tertiary);">›</span>
+              </div>
+            </div>
+
+            <div class="card" style="padding:4px;">
+              <div class="list-item" style="padding:12px;">
+                <div style="width:40px;height:40px;background:var(--purple-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">⚙️</div>
+                <div style="flex:1;">
+                  <div style="font-size:14px;font-weight:600;color:var(--text-primary);">系统设置</div>
+                  <div style="font-size:11px;color:var(--text-tertiary);">通知、隐私、安全设置</div>
+                </div>
+                <span style="font-size:14px;color:var(--text-tertiary);">›</span>
+              </div>
+              <div class="list-item" style="padding:12px;">
+                <div style="width:40px;height:40px;background:var(--teal-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">📱</div>
+                <div style="flex:1;">
+                  <div style="font-size:14px;font-weight:600;color:var(--text-primary);">帮助中心</div>
+                  <div style="font-size:11px;color:var(--text-tertiary);">常见问题、在线客服</div>
+                </div>
+                <span style="font-size:14px;color:var(--text-tertiary);">›</span>
+              </div>
+              <div class="list-item" style="padding:12px;border-bottom:none;">
+                <div style="width:40px;height:40px;background:var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">ℹ️</div>
+                <div style="flex:1;">
+                  <div style="font-size:14px;font-weight:600;color:var(--text-primary);">关于系统</div>
+                  <div style="font-size:11px;color:var(--text-tertiary);">版本 1.0.0</div>
+                </div>
+                <span style="font-size:14px;color:var(--text-tertiary);">›</span>
+              </div>
+            </div>
+
+            <button class="btn btn-ghost btn-lg" style="color:var(--danger);border-color:var(--danger-light);">退出登录</button>
+
+          </div>
+          <div style="height:20px;"></div>
+        </div>
+
+        <div class="tab-bar">
+          <div class="tab-item"><div class="tab-icon">🏠</div><div class="tab-text">工作台</div></div>
+          <div class="tab-item"><div class="tab-icon">👥</div><div class="tab-text">线索</div></div>
+          <div class="tab-item">
+            <div style="width:54px;height:54px;background:linear-gradient(135deg,#1677FF,#0958D9);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:-24px;box-shadow:0 4px 16px rgba(22,119,255,0.4);">
+              <span style="font-size:26px;color:#fff;">+</span>
+            </div>
+            <div class="tab-text" style="margin-top:2px;">进件</div>
+          </div>
+          <div class="tab-item"><div class="tab-icon">📊</div><div class="tab-text">统计</div></div>
+          <div class="tab-item active"><div class="tab-icon">👤</div><div class="tab-text" style="color:var(--primary);">我的</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

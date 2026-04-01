@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>车贷进件系统 - 贷后管理</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="device-showcase">
+
+  <!-- ===== 屏幕13: 还款提醒 ===== -->
+  <div class="device-group">
+    <div class="device-label">贷后 · 还款提醒</div>
+    <div class="phone-shell">
+      <div class="phone-screen">
+        <div class="status-bar white">
+          <span class="status-time" style="color:#333;">9:41</span>
+          <div class="status-icons"><span style="color:#333;">📶</span><span style="color:#333;">🔋</span></div>
+        </div>
+        <div class="nav-bar">
+          <div class="nav-title">还款提醒</div>
+          <div style="position:relative;">
+            <span style="font-size:20px;cursor:pointer;">🔔</span>
+            <div class="num-badge">5</div>
+          </div>
+        </div>
+        <div class="screen-content">
+          <!-- 汇总卡片 -->
+          <div style="background:linear-gradient(135deg,#1677FF,#0958D9);padding:20px 16px;">
+            <div style="color:rgba(255,255,255,0.8);font-size:12px;margin-bottom:10px;">本月待提醒还款</div>
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <div>
+                <div style="color:#fff;font-size:32px;font-weight:800;">8 <span style="font-size:16px;">人</span></div>
+                <div style="color:rgba(255,255,255,0.7);font-size:12px;margin-top:4px;">待提醒客户</div>
+              </div>
+              <div style="text-align:right;">
+                <div style="color:#fff;font-size:20px;font-weight:700;">¥ 56,336</div>
+                <div style="color:rgba(255,255,255,0.7);font-size:12px;margin-top:4px;">本月应收</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="padding:12px 16px;">
+            <!-- 筛选Tab -->
+            <div class="filter-tabs" style="padding:10px 0;">
+              <div class="filter-tab active">全部</div>
+              <div class="filter-tab">即将到期</div>
+              <div class="filter-tab">已逾期</div>
+              <div class="filter-tab">今日到期</div>
+            </div>
+
+            <!-- 还款列表 -->
+            <div style="display:flex;flex-direction:column;gap:10px;">
+
+              <!-- 逾期1 -->
+              <div class="card" style="border:1.5px solid var(--danger);">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+                  <div style="display:flex;align-items:center;gap:10px;">
+                    <div class="avatar avatar-md" style="background:linear-gradient(135deg,#FF4D4F,#CF1322);">刘</div>
+                    <div>
+                      <div style="font-size:14px;font-weight:700;color:var(--text-primary);">刘大强</div>
+                      <div style="font-size:11px;color:var(--text-tertiary);">¥8,542 · 第5期</div>
+                    </div>
+                  </div>
+                  <span class="badge badge-danger">逾期3天</span>
+                </div>
+                <div style="background:var(--danger-light);border-radius:8px;padding:10px;margin-bottom:10px;">
+                  <div style="font-size:11px;color:var(--danger);margin-bottom:4px;">⚠️ 已逾期</div>
+                  <div style="display:flex;justify-content:space-between;">
+                    <span style="font-size:11px;color:var(--text-tertiary);">应还日期：2026-03-06</span>
+                    <span style="font-size:11px;font-weight:700;color:var(--danger);">滞纳金：¥25</span>
+                  </div>
+                </div>
+                <div style="display:flex;gap:8px;">
+                  <button class="btn btn-ghost btn-sm" style="flex:1;">📞 拨打</button>
+                  <button class="btn btn-danger btn-sm" style="flex:1;">催收</button>
+                </div>
+              </div>
+
+              <!-- 今日到期 -->
+              <div class="card" style="border:1.5px solid var(--warning);">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+                  <div style="display:flex;align-items:center;gap:10px;">
+                    <div class="avatar avatar-md" style="background:linear-gradient(135deg,#FAAD14,#D4B106);">陈</div>
+                    <div>
+                      <div style="font-size:14px;font-weight:700;color:var(--text-primary);">陈思思</div>
+                      <div style="font-size:11px;color:var(--text-tertiary);">¥7,245 · 第8期</div>
+                    </div>
+                  </div>
+                  <span class="badge badge-warning">今日到期</span>
+                </div>
+                <div style="background:var(--warning-light);border-radius:8px;padding:10px;margin-bottom:10px;">
+                  <div style="font-size:11px;color:var(--warning);margin-bottom:4px;">⏰ 今日到期</div>
+                  <div style="font-size:11px;color:var(--text-tertiary);">应还日期：2026-04-01</div>
+                </div>
+                <div style="display:flex;gap:8px;">
+                  <button class="btn btn-ghost btn-sm" style="flex:1;">📞 拨打</button>
+                  <button class="btn btn-primary btn-sm" style="flex:1;">提醒</button>
+                </div>
+              </div>
+
+              <!-- 即将到期 -->
+              <div class="card">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+                  <div style="display:flex;align-items:center;gap:10px;">
+                    <div class="avatar avatar-md" style="background:linear-gradient(135deg,#1677FF,#0958D9);">赵</div>
+                    <div>
+                      <div style="font-size:14px;font-weight:700;color:var(--text-primary);">赵雷</div>
+                      <div style="font-size:11px;color:var(--text-tertiary);">¥6,128 · 第12期</div>
+                    </div>
+                  </div>
+                  <span class="badge badge-primary">3天后到期</span>
+                </div>
+                <div style="display:flex;gap:8px;">
+                  <button class="btn btn-ghost btn-sm" style="flex:1;">详情</button>
+                  <button class="btn btn-primary btn-sm" style="flex:1;">提醒</button>
+                </div>
+              </div>
+
+              <!-- 即将到期2 -->
+              <div class="card">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+                  <div style="display:flex;align-items:center;gap:10px;">
+                    <div class="avatar avatar-md" style="background:linear-gradient(135deg,#52C41A,#389E0D);">孙</div>
+                    <div>
+                      <div style="font-size:14px;font-weight:700;color:var(--text-primary);">孙燕</div>
+                      <div style="font-size:11px;color:var(--text-tertiary);">¥9,420 · 第3期</div>
+                    </div>
+                  </div>
+                  <span class="badge badge-primary">5天后到期</span>
+                </div>
+                <div style="display:flex;gap:8px;">
+                  <button class="btn btn-ghost btn-sm" style="flex:1;">详情</button>
+                  <button class="btn btn-primary btn-sm" style="flex:1;">提醒</button>
+                </div>
+              </div>
+
+            </div>
+            <div style="height:20px;"></div>
+          </div>
+        </div>
+
+        <div class="tab-bar">
+          <div class="tab-item"><div class="tab-icon">🏠</div><div class="tab-text">工作台</div></div>
+          <div class="tab-item"><div class="tab-icon">👥</div><div class="tab-text">线索</div></div>
+          <div class="tab-item">
+            <div style="width:54px;height:54px;background:linear-gradient(135deg,#1677FF,#0958D9);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:-24px;box-shadow:0 4px 16px rgba(22,119,255,0.4);">
+              <span style="font-size:26px;color:#fff;">+</span>
+            </div>
+            <div class="tab-text" style="margin-top:2px;">进件</div>
+          </div>
+          <div class="tab-item active"><div class="tab-icon">📊</div><div class="tab-text" style="color:var(--primary);">统计</div></div>
+          <div class="tab-item"><div class="tab-icon">👤</div><div class="tab-text">我的</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 屏幕14: 还款登记 ===== -->
+  <div class="device-group">
+    <div class="device-label">贷后 · 还款登记</div>
+    <div class="phone-shell">
+      <div class="phone-screen">
+        <div class="status-bar white">
+          <span class="status-time" style="color:#333;">9:41</span>
+          <div class="status-icons"><span style="color:#333;">📶</span><span style="color:#333;">🔋</span></div>
+        </div>
+        <div class="nav-bar">
+          <div class="nav-back">←</div>
+          <div class="nav-title">还款登记</div>
+        </div>
+        <div class="screen-content">
+          <!-- 客户信息 -->
+          <div style="background:linear-gradient(135deg,#52C41A,#389E0D);padding:20px 16px;">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <div class="avatar avatar-lg" style="background:rgba(255,255,255,0.2);border:2px solid rgba(255,255,255,0.4);">赵</div>
+              <div>
+                <div style="color:#fff;font-size:18px;font-weight:800;">赵雷</div>
+                <div style="color:rgba(255,255,255,0.7);font-size:13px;margin-top:4px;">贷款金额：¥250,000 · 第12期</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="padding:16px;">
+            <!-- 本期还款信息 -->
+            <div class="card" style="margin-bottom:12px;">
+              <div class="section-title" style="margin-bottom:12px;">本期还款信息</div>
+              <div class="data-row"><span class="data-key">本期应还</span><span class="data-val" style="color:var(--primary);font-weight:700;">¥ 6,128</span></div>
+              <div class="data-row"><span class="data-key">还款日期</span><span class="data-val">2026-04-04</span></div>
+              <div class="data-row"><span class="data-key">还款方式</span><span class="data-val">银行代扣</span></div>
+              <div class="data-row"><span class="data-key">收款账户</span><span class="data-val">6225****5678</span></div>
+              <div class="data-row" style="border-bottom:none;"><span class="data-key">银行</span><span class="data-val">招商银行</span></div>
+            </div>
+
+            <!-- 还款登记表 -->
+            <div class="card" style="margin-bottom:12px;">
+              <div class="section-title" style="margin-bottom:12px;">还款登记</div>
+              <div class="form-group">
+                <label class="form-label">实收金额 <span class="required">*</span></label>
+                <div class="form-input filled">
+                  <span style="font-size:15px;font-weight:700;color:var(--primary);">¥ 6,128.00</span>
+                  <span style="color:var(--text-tertiary);font-size:13px;">元</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">还款方式 <span class="required">*</span></label>
+                <div style="display:flex;gap:8px;">
+                  <div style="flex:1;height:38px;border:2px solid var(--primary);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--primary);font-weight:700;background:var(--primary-light);">银行代扣</div>
+                  <div style="flex:1;height:38px;border:1.5px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--text-secondary);">现金</div>
+                  <div style="flex:1;height:38px;border:1.5px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--text-secondary);">转账</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">还款时间 <span class="required">*</span></label>
+                <div class="form-input">
+                  <span class="placeholder">选择还款时间</span>
+                  <span style="color:var(--text-tertiary);">📅</span>
+                </div>
+              </div>
+              <div class="form-group" style="margin-bottom:0;">
+                <label class="form-label">备注</label>
+                <div style="background:var(--bg-section);border:1px solid var(--border);border-radius:8px;padding:10px;font-size:13px;color:var(--text-placeholder);">
+                  输入还款备注信息...
+                </div>
+              </div>
+            </div>
+
+            <!-- 还款凭证 -->
+            <div class="card" style="margin-bottom:12px;">
+              <div class="section-title" style="margin-bottom:12px;">上传还款凭证</div>
+              <div class="upload-box" style="padding:14px;">
+                <div class="upload-icon">📷</div>
+                <div class="upload-text">上传银行回单或转账截图</div>
+              </div>
+            </div>
+
+            <button class="btn btn-primary btn-lg">确认还款登记 →</button>
+          </div>
+          <div style="height:20px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 屏幕15: 逾期详情 ===== -->
+  <div class="device-group">
+    <div class="device-label">贷后 · 逾期详情</div>
+    <div class="phone-shell">
+      <div class="phone-screen">
+        <div class="status-bar white">
+          <span class="status-time" style="color:#333;">9:41</span>
+          <div class="status-icons"><span style="color:#333;">📶</span><span style="color:#333;">🔋</span></div>
+        </div>
+        <div class="nav-bar">
+          <div class="nav-back">←</div>
+          <div class="nav-title">逾期详情</div>
+        </div>
+        <div class="screen-content">
+          <!-- 逾期警告 -->
+          <div style="background:linear-gradient(135deg,#FF4D4F,#CF1322);padding:20px 16px;">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <div class="avatar avatar-lg" style="background:rgba(255,255,255,0.2);border:2px solid rgba(255,255,255,0.4);">刘</div>
+              <div>
+                <div style="color:#fff;font-size:18px;font-weight:800;">刘大强</div>
+                <div style="color:rgba(255,255,255,0.7);font-size:13px;margin-top:4px;">已逾期 3 天</div>
+              </div>
+            </div>
+            <div style="background:rgba(255,255,255,0.15);border-radius:10px;padding:12px;margin-top:16px;">
+              <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+                <span style="color:rgba(255,255,255,0.8);font-size:12px;">逾期天数</span>
+                <span style="color:#fff;font-size:20px;font-weight:800;">3 天</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;">
+                <span style="color:rgba(255,255,255,0.8);font-size:12px;">滞纳金</span>
+                <span style="color:#fff;font-size:20px;font-weight:800;">¥ 25</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="padding:16px;">
+            <!-- 逾期信息 -->
+            <div class="card" style="margin-bottom:12px;">
+              <div class="section-title" style="margin-bottom:12px;">逾期详情</div>
+              <div class="data-row"><span class="data-key">应还日期</span><span class="data-val danger">2026-03-06</span></div>
+              <div class="data-row"><span class="data-key">应还金额</span><span class="data-val" style="color:var(--primary);font-weight:700;">¥ 8,542</span></div>
+              <div class="data-row"><span class="data-key">逾期天数</span><span class="data-val danger">3 天</span></div>
+              <div class="data-row"><span class="data-key">滞纳金</span><span class="data-val" style="color:var(--danger);font-weight:700;">¥ 25.00</span></div>
+              <div class="data-row"><span class="data-key">总计应还</span><span class="data-val" style="color:var(--danger);font-weight:700;">¥ 8,567</span></div>
+              <div class="data-row" style="border-bottom:none;"><span class="data-key">催收状态</span><span class="badge badge-warning">首次催收</span></div>
+            </div>
+
+            <!-- 催收记录 -->
+            <div class="card" style="margin-bottom:12px;">
+              <div class="section-title" style="margin-bottom:12px;">催收记录 <span class="badge badge-primary">2条</span></div>
+              <div style="position:relative;padding-left:20px;">
+                <div style="position:absolute;left:7px;top:0;bottom:0;width:2px;background:var(--border-light);"></div>
+
+                <div style="position:relative;margin-bottom:16px;">
+                  <div style="position:absolute;left:-16px;top:3px;width:10px;height:10px;border-radius:50%;background:var(--danger);border:2px solid #fff;box-shadow:0 0 0 2px var(--danger);"></div>
+                  <div style="font-size:11px;color:var(--text-tertiary);margin-bottom:4px;">今天 10:30</div>
+                  <div style="background:var(--danger-light);border-radius:8px;padding:10px;">
+                    <div style="font-size:13px;color:var(--text-primary);">第二次电话催收，客户表示今天下午处理还款。</div>
+                    <div style="font-size:11px;color:var(--danger);margin-top:4px;">📞 电话催收 · 已接通</div>
+                  </div>
+                </div>
+
+                <div style="position:relative;margin-bottom:16px;">
+                  <div style="position:absolute;left:-16px;top:3px;width:10px;height:10px;border-radius:50%;background:var(--warning);border:2px solid #fff;box-shadow:0 0 0 2px var(--warning);"></div>
+                  <div style="font-size:11px;color:var(--text-tertiary);margin-bottom:4px;">昨天 15:00</div>
+                  <div style="background:var(--warning-light);border-radius:8px;padding:10px;">
+                    <div style="font-size:13px;color:var(--text-primary);">首次短信提醒，发送还款提醒通知。</div>
+                    <div style="font-size:11px;color:var(--warning);margin-top:4px;">💬 短信提醒 · 已发送</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 客户信息 -->
+            <div class="card" style="margin-bottom:12px;">
+              <div class="section-title" style="margin-bottom:12px;">联系信息</div>
+              <div class="data-row"><span class="data-key">客户姓名</span><span class="data-val">刘大强</span></div>
+              <div class="data-row"><span class="data-key">联系电话</span><span class="data-val primary">186****9012</span></div>
+              <div class="data-row"><span class="data-key">备用电话</span><span class="data-val">137****3456</span></div>
+              <div class="data-row" style="border-bottom:none;"><span class="data-key">紧急联系人</span><span class="data-val">张三（配偶）</span></div>
+            </div>
+
+            <!-- 操作按钮 -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+              <button class="btn btn-ghost btn-md" style="height:44px;border-radius:10px;">📞 继续催收</button>
+              <button class="btn btn-primary btn-md" style="height:44px;border-radius:10px;">记录催收</button>
+            </div>
+          </div>
+          <div style="height:20px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 屏幕16: 统计报表 ===== -->
+  <div class="device-group">
+    <div class="device-label">统计 · 业绩报表</div>
+    <div class="phone-shell">
+      <div class="phone-screen">
+        <div class="status-bar white">
+          <span class="status-time" style="color:#333;">9:41</span>
+          <div class="status-icons"><span style="color:#333;">📶</span><span style="color:#333;">🔋</span></div>
+        </div>
+        <div class="nav-bar">
+          <div class="nav-title">业绩报表</div>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <span style="font-size:12px;color:var(--primary);background:var(--primary-light);padding:4px 10px;border-radius:10px;font-weight:600;">2026年4月</span>
+          </div>
+        </div>
+        <div class="screen-content">
+          <div style="padding:16px;">
+            <!-- 核心数据 -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;">
+              <div class="card" style="padding:14px;">
+                <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
+                  <div class="icon-wrap-sm" style="background:var(--primary-light);">📋</div>
+                  <span style="font-size:11px;color:var(--text-tertiary);">进件数</span>
+                </div>
+                <div style="font-size:28px;font-weight:800;color:var(--primary);">12</div>
+                <div style="font-size:11px;color:var(--success);margin-top:4px;">↑ 20% 较上月</div>
+              </div>
+              <div class="card" style="padding:14px;">
+                <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
+                  <div class="icon-wrap-sm" style="background:var(--success-light);">✓</div>
+                  <span style="font-size:11px;color:var(--text-tertiary);">通过数</span>
+                </div>
+                <div style="font-size:28px;font-weight:800;color:var(--success);">8</div>
+                <div style="font-size:11px;color:var(--success);margin-top:4px;">↑ 15% 较上月</div>
+              </div>
+              <div class="card" style="padding:14px;">
+                <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
+                  <div class="icon-wrap-sm" style="background:var(--orange-light);">💰</div>
+                  <span style="font-size:11px;color:var(--text-tertiary);">放款额(万)</span>
+                </div>
+                <div style="font-size:28px;font-weight:800;color:var(--orange);">320</div>
+                <div style="font-size:11px;color:var(--success);margin-top:4px;">↑ 8% 较上月</div>
+              </div>
+              <div class="card" style="padding:14px;">
+                <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
+                  <div class="icon-wrap-sm" style="background:var(--purple-light);">📊</div>
+                  <span style="font-size:11px;color:var(--text-tertiary);">通过率</span>
+                </div>
+                <div style="font-size:28px;font-weight:800;color:var(--purple);">67%</div>
+                <div style="font-size:11px;color:var(--danger);margin-top:4px;">↓ 3% 较上月</div>
+              </div>
+            </div>
+
+            <!-- 进件漏斗 -->
+            <div class="card" style="margin-bottom:12px;">
+              <div class="section-title" style="margin-bottom:12px;">进件漏斗</div>
+              <div class="funnel-item">
+                <div class="funnel-bar" style="width:90%;background:linear-gradient(90deg,#1677FF,#36A3FF);">12</div>
+                <div class="funnel-info">进件总数</div>
+              </div>
+              <div class="funnel-item">
+                <div class="funnel-bar" style="width:70%;background:linear-gradient(90deg,#52C41A,#73D13D);">10</div>
+                <div class="funnel-info">预审通过</div>
+              </div>
+              <div class="funnel-item">
+                <div class="funnel-bar" style="width:55%;background:linear-gradient(90deg,#FAAD14,#FFC53D);">8</div>
+                <div class="funnel-info">审批通过</div>
+              </div>
+              <div class="funnel-item">
+                <div class="funnel-bar" style="width:50%;background:linear-gradient(90deg,#722ED1,#9254DE);">8</div>
+                <div class="funnel-info">放款成功</div>
+              </div>
+            </div>
+
+            <!-- 月度趋势 -->
+            <div class="card" style="margin-bottom:12px;">
+              <div class="section-title" style="margin-bottom:12px;">月度趋势</div>
+              <div class="chart-bar-group">
+                <div class="chart-bar-col">
+                  <div class="chart-bar" style="height:40%;"></div>
+                  <div class="chart-label">1月</div>
+                </div>
+                <div class="chart-bar-col">
+                  <div class="chart-bar" style="height:55%;"></div>
+                  <div class="chart-label">2月</div>
+                </div>
+                <div class="chart-bar-col">
+                  <div class="chart-bar success" style="height:70%;"></div>
+                  <div class="chart-label">3月</div>
+                </div>
+                <div class="chart-bar-col">
+                  <div class="chart-bar orange" style="height:60%;"></div>
+                  <div class="chart-label">4月</div>
+                </div>
+                <div class="chart-bar-col">
+                  <div class="chart-bar" style="height:45%;"></div>
+                  <div class="chart-label">5月</div>
+                </div>
+                <div class="chart-bar-col">
+                  <div class="chart-bar" style="height:65%;"></div>
+                  <div class="chart-label">6月</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 产品分布 -->
+            <div class="card">
+              <div class="section-title" style="margin-bottom:12px;">产品分布</div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                <span class="badge badge-primary">新车贷款 5笔</span>
+                <span class="badge badge-orange">二手车 4笔</span>
+                <span class="badge badge-purple">抵押贷款 2笔</span>
+                <span class="badge badge-teal">其他 1笔</span>
+              </div>
+            </div>
+          </div>
+          <div style="height:20px;"></div>
+        </div>
+
+        <div class="tab-bar">
+          <div class="tab-item"><div class="tab-icon">🏠</div><div class="tab-text">工作台</div></div>
+          <div class="tab-item"><div class="tab-icon">👥</div><div class="tab-text">线索</div></div>
+          <div class="tab-item">
+            <div style="width:54px;height:54px;background:linear-gradient(135deg,#1677FF,#0958D9);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:-24px;box-shadow:0 4px 16px rgba(22,119,255,0.4);">
+              <span style="font-size:26px;color:#fff;">+</span>
+            </div>
+            <div class="tab-text" style="margin-top:2px;">进件</div>
+          </div>
+          <div class="tab-item active"><div class="tab-icon">📊</div><div class="tab-text" style="color:var(--primary);">统计</div></div>
+          <div class="tab-item"><div class="tab-icon">👤</div><div class="tab-text">我的</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

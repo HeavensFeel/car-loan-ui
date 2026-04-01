@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>车贷小程序进件系统 - 高保真UI设计稿</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .preview-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .preview-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #1677FF 100%);
+            border-radius: 16px;
+            color: white;
+        }
+        .preview-header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        .preview-header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+        .preview-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+        .preview-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+        .preview-card-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+        .preview-card-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #262626;
+        }
+        .preview-card-desc {
+            font-size: 14px;
+            color: #8C8C8C;
+            line-height: 1.6;
+        }
+        .preview-card-pages {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #F0F0F0;
+        }
+        .preview-card-pages .page-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #F0F0F0;
+            border-radius: 12px;
+            font-size: 12px;
+            color: #595959;
+            margin: 4px 4px 4px 0;
+        }
+        .color-blue { background: linear-gradient(135deg, #1677FF 0%, #4096FF 100%); color: white; }
+        .color-green { background: linear-gradient(135deg, #52C41A 0%, #73D13D 100%); color: white; }
+        .color-purple { background: linear-gradient(135deg, #722ED1 0%, #9254DE 100%); color: white; }
+        .color-orange { background: linear-gradient(135deg, #FA8C16 0%, #FFA940 100%); color: white; }
+        .color-cyan { background: linear-gradient(135deg, #13C2C2 0%, #36CFC9 100%); color: white; }
+        .preview-footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #8C8C8C;
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-container">
+        <!-- 头部 -->
+        <div class="preview-header">
+            <h1>🚗 车贷小程序进件系统</h1>
+            <p>高保真UI设计稿 · 完整业务流程演示</p>
+        </div>
+
+        <!-- 卡片网格 -->
+        <div class="preview-grid">
+            <!-- 首页 & CRM -->
+            <a href="page-home.html" class="preview-card">
+                <div class="preview-card-icon color-blue">📊</div>
+                <div class="preview-card-title">工作台 & CRM</div>
+                <div class="preview-card-desc">业绩概览、线索管理、客户跟进</div>
+                <div class="preview-card-pages">
+                    <span class="page-tag">工作台</span>
+                    <span class="page-tag">线索清单</span>
+                    <span class="page-tag">线索详情</span>
+                </div>
+            </a>
+
+            <!-- 进件流程 -->
+            <a href="page-loan.html" class="preview-card">
+                <div class="preview-card-icon color-green">📝</div>
+                <div class="preview-card-title">进件流程</div>
+                <div class="preview-card-desc">扫码进件、资料填写、风控预审</div>
+                <div class="preview-card-pages">
+                    <span class="page-tag">扫码进件</span>
+                    <span class="page-tag">资料填写</span>
+                    <span class="page-tag">上传文件</span>
+                    <span class="page-tag">大数据预审</span>
+                </div>
+            </a>
+
+            <!-- 审批流程 -->
+            <a href="page-approval.html" class="preview-card">
+                <div class="preview-card-icon color-purple">✅</div>
+                <div class="preview-card-title">审批流程</div>
+                <div class="preview-card-desc">审批进度、面签、GPS、放款</div>
+                <div class="preview-card-pages">
+                    <span class="page-tag">审批进度</span>
+                    <span class="page-tag">面签预约</span>
+                    <span class="page-tag">面签完成</span>
+                    <span class="page-tag">GPS安装</span>
+                    <span class="page-tag">放款成功</span>
+                </div>
+            </a>
+
+            <!-- 贷后管理 -->
+            <a href="page-post-loan.html" class="preview-card">
+                <div class="preview-card-icon color-orange">📅</div>
+                <div class="preview-card-title">贷后管理</div>
+                <div class="preview-card-desc">还款提醒、逾期管理、数据统计</div>
+                <div class="preview-card-pages">
+                    <span class="page-tag">还款提醒</span>
+                    <span class="page-tag">还款登记</span>
+                    <span class="page-tag">逾期详情</span>
+                    <span class="page-tag">统计报表</span>
+                </div>
+            </a>
+
+            <!-- 管理功能 -->
+            <a href="page-admin.html" class="preview-card">
+                <div class="preview-card-icon color-cyan">⚙️</div>
+                <div class="preview-card-title">管理功能</div>
+                <div class="preview-card-desc">机构、账号、产品、系统配置</div>
+                <div class="preview-card-pages">
+                    <span class="page-tag">机构管理</span>
+                    <span class="page-tag">账号管理</span>
+                    <span class="page-tag">产品管理</span>
+                    <span class="page-tag">个人中心</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- 底部 -->
+        <div class="preview-footer">
+            <p>💡 提示：点击卡片进入对应模块，在页面顶部切换标签查看所有页面</p>
+            <p style="margin-top: 8px;">设计系统：现代简约风格 · 主色调 #1677FF</p>
+        </div>
+    </div>
+</body>
+</html>

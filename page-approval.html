@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>车贷进件系统 - 审批流程</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="device-showcase">
+
+  <!-- ===== 屏幕8: 进件审批进度 ===== -->
+  <div class="device-group">
+    <div class="device-label">审批 · 流程进度</div>
+    <div class="phone-shell">
+      <div class="phone-screen">
+        <div class="status-bar white">
+          <span class="status-time" style="color:#333;">9:41</span>
+          <div class="status-icons"><span style="color:#333;">📶</span><span style="color:#333;">🔋</span></div>
+        </div>
+        <div class="nav-bar">
+          <div class="nav-back">←</div>
+          <div class="nav-title">进件详情</div>
+          <div class="nav-action">撤回</div>
+        </div>
+        <div class="screen-content">
+          <!-- 顶部状态 -->
+          <div style="background:linear-gradient(135deg,#1677FF,#0958D9);padding:20px 16px;">
+            <div style="color:rgba(255,255,255,0.8);font-size:12px;margin-bottom:8px;">进件编号：JJ20260401001</div>
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+              <div class="avatar avatar-lg" style="background:rgba(255,255,255,0.2);border:2px solid rgba(255,255,255,0.4);">王</div>
+              <div style="flex:1;">
+                <div style="color:#fff;font-size:18px;font-weight:800;">王小明</div>
+                <div style="color:rgba(255,255,255,0.7);font-size:13px;margin-top:4px;">二手车贷款 · 申请金额 ¥280,000</div>
+              </div>
+            </div>
+            <div style="background:rgba(255,255,255,0.15);border-radius:10px;padding:12px;display:flex;align-items:center;gap:12px;">
+              <div style="width:44px;height:44px;background:rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;">⏳</div>
+              <div>
+                <div style="color:#fff;font-size:14px;font-weight:700;">审批中</div>
+                <div style="color:rgba(255,255,255,0.7);font-size:11px;">当前环节：风控审核 · 预计2-3个工作日</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 流程时间轴 -->
+          <div style="padding:20px 16px;">
+            <div style="font-size:15px;font-weight:700;margin-bottom:16px;">审批流程</div>
+            <div style="position:relative;padding-left:24px;">
+              <div style="position:absolute;left:8px;top:8px;bottom:8px;width:2px;background:var(--border-light);"></div>
+
+              <!-- 已完成步骤 -->
+              <div style="position:relative;margin-bottom:24px;">
+                <div style="position:absolute;left:-20px;top:2px;width:12px;height:12px;border-radius:50%;background:var(--success);border:2px solid #fff;box-shadow:0 0 0 2px var(--success);"></div>
+                <div style="background:#F6FFED;border-radius:12px;padding:14px;">
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+                    <span style="font-size:14px;font-weight:700;color:var(--success);">✓ 进件提交</span>
+                    <span style="font-size:11px;color:var(--text-tertiary);">04-01 09:30</span>
+                  </div>
+                  <div style="font-size:13px;color:var(--text-primary);">业务员提交进件申请，资料齐全</div>
+                </div>
+              </div>
+
+              <div style="position:relative;margin-bottom:24px;">
+                <div style="position:absolute;left:-20px;top:2px;width:12px;height:12px;border-radius:50%;background:var(--success);border:2px solid #fff;box-shadow:0 0 0 2px var(--success);"></div>
+                <div style="background:#F6FFED;border-radius:12px;padding:14px;">
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+                    <span style="font-size:14px;font-weight:700;color:var(--success);">✓ 初审通过</span>
+                    <span style="font-size:11px;color:var(--text-tertiary);">04-01 10:45</span>
+                  </div>
+                  <div style="font-size:13px;color:var(--text-primary);">初审员审核通过，推荐额度¥260,000</div>
+                  <div style="margin-top:8px;padding:8px;background:#fff;border-radius:6px;">
+                    <div style="font-size:11px;color:var(--text-tertiary);">审核人：王初审员</div>
+                    <div style="font-size:11px;color:var(--success);">意见：客户征信良好，建议通过</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 进行中 -->
+              <div style="position:relative;margin-bottom:24px;">
+                <div style="position:absolute;left:-20px;top:2px;width:12px;height:12px;border-radius:50%;background:var(--primary);border:2px solid #fff;box-shadow:0 0 0 3px rgba(22,119,255,0.3);"></div>
+                <div style="background:var(--primary-light);border-radius:12px;padding:14px;border:1.5px solid var(--primary);">
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+                    <span style="font-size:14px;font-weight:700;color:var(--primary);">⏳ 风控审核</span>
+                    <span class="badge badge-primary">处理中</span>
+                  </div>
+                  <div style="font-size:13px;color:var(--text-primary);">风控部门复核中...</div>
+                  <div style="margin-top:8px;display:flex;gap:6px;">
+                    <span class="badge badge-gray">征信查询</span>
+                    <span class="badge badge-success">✓ 完成</span>
+                    <span class="badge badge-gray">公安核查</span>
+                    <span class="badge badge-primary">进行中</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 待进行 -->
+              <div style="position:relative;margin-bottom:24px;">
+                <div style="position:absolute;left:-20px;top:2px;width:12px;height:12px;border-radius:50%;background:var(--border);border:2px solid #fff;"></div>
+                <div style="background:#FAFAFA;border-radius:12px;padding:14px;opacity:0.6;">
+                  <div style="font-size:14px;font-weight:700;color:var(--text-secondary);">终审决策</div>
+                  <div style="font-size:13px;color:var(--text-tertiary);margin-top:4px;">等待风控审核完成</div>
+                </div>
+              </div>
+
+              <div style="position:relative;">
+                <div style="position:absolute;left:-20px;top:2px;width:12px;height:12px;border-radius:50%;background:var(--border);border:2px solid #fff;"></div>
+                <div style="background:#FAFAFA;border-radius:12px;padding:14px;opacity:0.6;">
+                  <div style="font-size:14px;font-weight:700;color:var(--text-secondary);">通知面签</div>
+                  <div style="font-size:13px;color:var(--text-tertiary);margin-top:4px;">终审通过后通知客户面签</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 进件信息摘要 -->
+          <div class="divider"></div>
+          <div style="background:#fff;padding:16px;">
+            <div class="section-title">进件信息摘要</div>
+            <div class="data-row"><span class="data-key">产品类型</span><span class="data-val primary">乐享贷·车主专享</span></div>
+            <div class="data-row"><span class="data-key">申请金额</span><span class="data-val" style="color:var(--orange);font-weight:700;">¥ 280,000</span></div>
+            <div class="data-row"><span class="data-key">贷款期数</span><span class="data-val">36期</span></div>
+            <div class="data-row"><span class="data-key">还款方式</span><span class="data-val">等额本息</div></div>
+            <div class="data-row"><span class="data-key">预估月供</span><span class="data-val">¥ 8,542</span></div>
+            <div class="data-row" style="border-bottom:none;"><span class="data-key">所属机构</span><span class="data-val">上海浦东分行</span></div>
+          </div>
+          <div style="height:20px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 屏幕9: 面签预约 ===== -->
+  <div class="device-group">
+    <div class="device-label">审批 · 面签预约</div>
+    <div class="phone-shell">
+      <div class="phone-screen">
+        <div class="status-bar white">
+          <span class="status-time" style="color:#333;">9:41</span>
+          <div class="status-icons"><span style="color:#333;">📶</span><span style="color:#333;">🔋</span></div>
+        </div>
+        <div class="nav-bar">
+          <div class="nav-back">←</div>
+          <div class="nav-title">面签预约</div>
+        </div>
+        <div class="screen-content">
+          <!-- 顶部提示 -->
+          <div style="background:linear-gradient(135deg,#52C41A,#389E0D);padding:20px 16px;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+              <span style="font-size:24px;">🎉</span>
+              <div style="color:#fff;font-size:16px;font-weight:800;">恭喜！进件已通过终审</div>
+            </div>
+            <div style="color:rgba(255,255,255,0.9);font-size:13px;">请与客户确认面签时间，完成签约流程</div>
+          </div>
+
+          <div style="padding:16px;">
+            <!-- 审批结果 -->
+            <div class="card" style="margin-bottom:12px;">
+              <div class="section-title" style="margin-bottom:12px;">审批结果</div>
+              <div style="display:flex;align-items:center;gap:10px;padding:12px;background:linear-gradient(135deg,#F6FFED,#E6FFFB);border-radius:10px;border:1px solid #B7EB8F;">
+                <div class="icon-wrap-sm" style="background:var(--success);">✓</div>
+                <div>
+                  <div style="font-size:14px;font-weight:700;color:var(--success);">审批通过</div>
+                  <div style="font-size:11px;color:var(--text-tertiary);">终审员：李风控</div>
+                </div>
+              </div>
+              <div style="margin-top:12px;">
+                <div class="data-row"><span class="data-key">批准额度</span><span class="data-val" style="color:var(--orange);font-weight:700;">¥ 260,000</span></div>
+                <div class="data-row"><span class="data-key">贷款利率</span><span class="data-val success">4.2% 年化</span></div>
+                <div class="data-row" style="border-bottom:none;"><span class="data-key">生效日期</span><span class="data-val">2026-04-05</span></div>
+              </div>
+            </div>
+
+            <!-- 面签信息 -->
+            <div class="card" style="margin-bottom:12px;">
+              <div class="section-title" style="margin-bottom:12px;">面签信息</div>
+              <div class="form-group">
+                <label class="form-label">客户姓名</label>
+                <div class="form-input filled">王小明</div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">联系电话</label>
+                <div class="form-input filled">138-8888-5678</div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">预约时间 <span class="required">*</span></label>
+                <div class="form-input">
+                  <span class="placeholder">选择预约时间</span>
+                  <span style="color:var(--text-tertiary);">📅</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">面签地点 <span class="required">*</span></label>
+                <div class="form-input">
+                  <span class="placeholder">选择面签地点</span>
+                  <span style="color:var(--text-tertiary);">📍</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 面签须知 -->
+            <div class="card" style="margin-bottom:12px;background:var(--warning-light);">
+              <div style="display:flex;align-items:gap:8px;margin-bottom:8px;">
+                <span style="font-size:16px;">⚠️</span>
+                <div style="font-size:13px;font-weight:700;color:var(--warning);">面签所需材料</div>
+              </div>
+              <div style="font-size:12px;color:var(--text-secondary);line-height:1.6;">
+                1. 身份证原件及复印件<br>
+                2. 驾驶证原件及复印件<br>
+                3. 行驶证原件及复印件<br>
+                4. 购车发票原件<br>
+                5. 近3个月银行流水
+              </div>
+            </div>
+
+            <!-- 操作按钮 -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+              <button class="btn btn-ghost btn-md" style="height:44px;border-radius:10px;">📞 联系客户</button>
+              <button class="btn btn-primary btn-md" style="height:44px;border-radius:10px;">确认预约 →</button>
+            </div>
+          </div>
+          <div style="height:20px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 屏幕10: 面签完成 ===== -->
+  <div class="device-group">
+    <div class="device-label">审批 · 面签完成</div>
+    <div class="phone-shell">
+      <div class="phone-screen">
+        <div class="status-bar white">
+          <span class="status-time" style="color:#333;">9:41</span>
+          <div class="status-icons"><span style="color:#333;">📶</span><span style="color:#333;">🔋</span></div>
+        </div>
+        <div class="nav-bar">
+          <div class="nav-back">←</div>
+          <div class="nav-title">面签详情</div>
+        </div>
+        <div class="screen-content">
+          <div style="background:linear-gradient(135deg,#52C41A,#389E0D);padding:20px 16px;">
+            <div style="color:rgba(255,255,255,0.8);font-size:12px;margin-bottom:8px;">面签编号：FQ20260401001</div>
+            <div style="display:flex;align-items:center;gap:12px;">
+              <div class="avatar avatar-lg" style="background:rgba(255,255,255,0.2);border:2px solid rgba(255,255,255,0.4);">王</div>
+              <div>
+                <div style="color:#fff;font-size:18px;font-weight:800;">王小明</div>
+                <div style="color:rgba(255,255,255,0.7);font-size:13px;margin-top:4px;">二手车贷款 ¥260,000</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="padding:16px;">
+            <!-- 面签状态 -->
+            <div class="card" style="margin-bottom:12px;">
+              <div style="display:flex;align-items:center;gap:12px;padding:12px;background:linear-gradient(135deg,#F6FFED,#E6FFFB);border-radius:10px;border:1px solid #B7EB8F;">
+                <div class="icon-wrap-sm" style="background:var(--success);">✓</div>
+                <div>
+                  <div style="font-size:14px;font-weight:700;color:var(--success);">面签已完成</div>
+                  <div style="font-size:11px;color:var(--text-tertiary);">签约资料齐全，等待GPS安装</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 面签信息 -->
+            <div class="card" style="margin-bottom:12px;">
+              <div class="section-title" style="margin-bottom:12px;">面签信息</div>
+              <div class="data-row"><span class="data-key">面签时间</span><span class="data-val">2026-04-05 14:00</span></div>
+              <div class="data-row"><span class="data-key">面签地点</span><span class="data-val">上海浦东分行</div></div>
+              <div class="data-row"><span class="data-key">经办人</span><span class="data-val">张业务员</span></div>
+              <div class="data-row"><span class="data-key">审核人</span><span class="data-val">李主管</span></div>
+              <div class="data-row" style="border-bottom:none;"><span class="data-key">完成时间</span><span class="data-val">2026-04-05 15:30</span></div>
+            </div>
+
+            <!-- 已签署文件 -->
+            <div class="card" style="margin-bottom:12px;">
+              <div class="section-title" style="margin-bottom:12px;">已签署文件</div>
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                <div style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--success-light);border-radius:8px;">
+                  <span style="font-size:16px;">✓</span>
+                  <div style="flex:1;font-size:13px;">借款合同.pdf</div>
+                  <span style="font-size:11px;color:var(--text-tertiary);">已签</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--success-light);border-radius:8px;">
+                  <span style="font-size:16px;">✓</span>
+                  <div style="flex:1;font-size:13px;">抵押合同.pdf</div>
+                  <span style="font-size:11px;color:var(--text-tertiary);">已签</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--success-light);border-radius:8px;">
+                  <span style="font-size:16px;">✓</span>
+                  <div style="flex:1;font-size:13px;">担保合同.pdf</div>
+                  <span style="font-size:11px;color:var(--text-tertiary);">已签</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--success-light);border-radius:8px;">
+                  <span style="font-size:16px;">✓</span>
+                  <div style="flex:1;font-size:13px;">还款计划表.pdf</div>
+                  <span style="font-size:11px;color:var(--text-tertiary);">已签</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 下一步 -->
+            <div class="card" style="background:linear-gradient(135deg,#FFF4EE,#FFE8DC);border:1.5px solid #FFA940;">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+                <span style="font-size:20px;">📌</span>
+                <div style="font-size:14px;font-weight:700;color:var(--orange);">下一步：GPS安装</div>
+              </div>
+              <div style="font-size:12px;color:var(--text-secondary);">请尽快安排GPS安装，安装完成后上传照片即可放款</div>
+            </div>
+
+            <button class="btn btn-primary btn-lg">预约GPS安装 →</button>
+          </div>
+          <div style="height:20px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 屏幕11: GPS安装 ===== -->
+  <div class="device-group">
+    <div class="device-label">审批 · GPS安装</div>
+    <div class="phone-shell">
+      <div class="phone-screen">
+        <div class="status-bar white">
+          <span class="status-time" style="color:#333;">9:41</span>
+          <div class="status-icons"><span style="color:#333;">📶</span><span style="color:#333;">🔋</span></div>
+        </div>
+        <div class="nav-bar">
+          <div class="nav-back">←</div>
+          <div class="nav-title">GPS安装登记</div>
+        </div>
+        <div class="screen-content">
+          <div style="background:linear-gradient(135deg,#722ED1,#531DAB);padding:20px 16px;">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+              <div class="avatar avatar-md" style="background:rgba(255,255,255,0.2);">王</div>
+              <div>
+                <div style="color:#fff;font-size:15px;font-weight:700;">王小明</div>
+                <div style="color:rgba(255,255,255,0.7);font-size:12px;">贷款金额：¥260,000</div>
+              </div>
+            </div>
+            <div style="background:rgba(255,255,255,0.15);border-radius:10px;padding:12px;">
+              <div style="color:#fff;font-size:13px;font-weight:700;margin-bottom:4px;">待安装GPS</div>
+              <div style="color:rgba(255,255,255,0.8);font-size:11px;">GPS设备已分配，请完成安装登记</div>
+            </div>
+          </div>
+
+          <div style="padding:16px;">
+            <!-- 设备信息 -->
+            <div class="card" style="margin-bottom:12px;">
+              <div class="section-title" style="margin-bottom:12px;">GPS设备信息</div>
+              <div class="data-row"><span class="data-key">设备编号</span><span class="data-val primary">GPS20260401001</span></div>
+              <div class="data-row"><span class="data-key">设备型号</span><span class="data-val">GT-900 Pro</span></div>
+              <div class="data-row"><span class="data-key">供应商</span><span class="data-val">智行科技</span></div>
+              <div class="data-row" style="border-bottom:none;"><span class="data-key">分配时间</span><span class="data-val">2026-04-05 16:00</span></div>
+            </div>
+
+            <!-- 安装登记表 -->
+            <div class="card" style="margin-bottom:12px;">
+              <div class="section-title" style="margin-bottom:12px;">安装登记</div>
+              <div class="form-group">
+                <label class="form-label">安装日期 <span class="required">*</span></label>
+                <div class="form-input">
+                  <span class="placeholder">选择安装日期</span>
+                  <span style="color:var(--text-tertiary);">📅</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">安装位置 <span class="required">*</span></label>
+                <div class="form-input">
+                  <span class="placeholder">输入安装位置</span>
+                  <span style="color:var(--text-tertiary);">📍</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">安装照片 <span class="required">*</span></label>
+                <div class="upload-box" style="padding:16px;">
+                  <div class="upload-icon">📷</div>
+                  <div class="upload-text">上传安装位置照片（最多3张）</div>
+                </div>
+              </div>
+              <div class="form-group" style="margin-bottom:0;">
+                <label class="form-label">备注</label>
+                <div style="background:var(--bg-section);border:1px solid var(--border);border-radius:8px;padding:10px;font-size:13px;color:var(--text-placeholder);">
+                  输入安装备注信息...
+                </div>
+              </div>
+            </div>
+
+            <!-- 注意事项 -->
+            <div class="card" style="background:var(--warning-light);">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+                <span style="font-size:16px;">⚠️</span>
+                <div style="font-size:13px;font-weight:700;color:var(--warning);">安装注意事项</div>
+              </div>
+              <div style="font-size:12px;color:var(--text-secondary);line-height:1.6;">
+                1. GPS应安装在隐蔽、不易发现的位置<br>
+                2. 确保设备电源连接正常<br>
+                3. 安装后进行信号测试<br>
+                4. 拍照时应包含设备全貌和周边环境
+              </div>
+            </div>
+
+            <button class="btn btn-primary btn-lg" style="margin-top:12px;">提交安装信息，申请放款 →</button>
+          </div>
+          <div style="height:20px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 屏幕12: 放款成功 ===== -->
+  <div class="device-group">
+    <div class="device-label">审批 · 放款成功</div>
+    <div class="phone-shell">
+      <div class="phone-screen">
+        <div class="status-bar white">
+          <span class="status-time" style="color:#333;">9:41</span>
+          <div class="status-icons"><span style="color:#333;">📶</span><span style="color:#333;">🔋</span></div>
+        </div>
+        <div class="nav-bar">
+          <div class="nav-back">←</div>
+          <div class="nav-title">放款详情</div>
+        </div>
+        <div class="screen-content">
+          <!-- 成功状态 -->
+          <div style="background:linear-gradient(135deg,#52C41A,#389E0D);padding:30px 20px;text-align:center;">
+            <div style="width:80px;height:80px;background:rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:40px;">🎉</div>
+            <div style="color:#fff;font-size:20px;font-weight:800;margin-bottom:8px;">放款成功！</div>
+            <div style="color:rgba(255,255,255,0.8);font-size:14px;">款项已转入客户账户</div>
+          </div>
+
+          <div style="padding:16px;">
+            <!-- 放款信息 -->
+            <div class="card" style="margin-bottom:12px;">
+              <div class="section-title" style="margin-bottom:12px;">放款信息</div>
+              <div style="text-align:center;padding:12px;background:linear-gradient(135deg,#FFF4EE,#FFE8DC);border-radius:10px;margin-bottom:12px;">
+                <div style="font-size:12px;color:var(--text-tertiary);">放款金额</div>
+                <div style="font-size:32px;font-weight:800;color:var(--orange);">¥ 260,000</div>
+              </div>
+              <div class="data-row"><span class="data-key">放款编号</span><span class="data-val primary">FK20260406001</span></div>
+              <div class="data-row"><span class="data-key">放款时间</span><span class="data-val">2026-04-06 10:30</span></div>
+              <div class="data-row"><span class="data-key">收款账户</span><span class="data-val">招商银行 6225****1234</span></div>
+              <div class="data-row"><span class="data-key">收款人</span><span class="data-val">王小明</span></div>
+              <div class="data-row" style="border-bottom:none;"><span class="data-key">经办银行</span><span class="data-val">招商银行上海浦东支行</span></div>
+            </div>
+
+            <!-- 还款信息 -->
+            <div class="card" style="margin-bottom:12px;">
+              <div class="section-title" style="margin-bottom:12px;">还款信息</div>
+              <div class="data-row"><span class="data-key">贷款期数</span><span class="data-val">36期</span></div>
+              <div class="data-row"><span class="data-key">还款方式</span><span class="data-val">等额本息</span></div>
+              <div class="data-row"><span class="data-key">首期还款日</span><span class="data-val success">2026-05-06</span></div>
+              <div class="data-row"><span class="data-key">每月还款日</span><span class="data-val">每月6日</span></div>
+              <div class="data-row" style="border-bottom:none;"><span class="data-key">每月应还</span><span class="data-val" style="color:var(--orange);font-weight:700;">¥ 8,542</span></div>
+            </div>
+
+            <!-- 后续事项 -->
+            <div class="card" style="background:linear-gradient(135deg,#E8F4FF,#C6E3FF);">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+                <span style="font-size:20px;">📋</span>
+                <div style="font-size:14px;font-weight:700;color:var(--primary);">后续注意事项</div>
+              </div>
+              <div style="font-size:12px;color:var(--text-secondary);line-height:1.6;">
+                1. 请提醒客户按期还款，避免逾期<br>
+                2. 客户可通过小程序查看还款计划<br>
+                3. 如需提前还款，可提前10个工作日申请
+              </div>
+            </div>
+
+            <!-- 操作按钮 -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px;">
+              <button class="btn btn-ghost btn-md" style="height:44px;border-radius:10px;">📞 联系客户</button>
+              <button class="btn btn-primary btn-md" style="height:44px;border-radius:10px;">查看还款计划</button>
+            </div>
+          </div>
+          <div style="height:20px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
