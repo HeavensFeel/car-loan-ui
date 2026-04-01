@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>车贷小程序进件系统</title>
+    <link rel="stylesheet" href="styles-mobile.css">
+    <style>
+        .screen { display: none; }
+        .screen.active { display: flex; }
+        .hidden { display: none !important; }
+        .fade-in { animation: fadeIn 0.3s ease-out; }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <!-- Screen 1: 工作台首页 -->
+        <div class="screen active" id="screen-home">
+            <div class="status-bar primary">
+                <div class="status-time">14:02</div>
+                <div class="status-icons">
+                    <span>📶</span>
+                    <span>🔋</span>
+                </div>
+            </div>
+
+            <div class="hero-section">
+                <h1>下午好，王经理</h1>
+                <p>2026年4月1日 星期三</p>
+            </div>
+
+            <div class="screen-content">
+                <div class="card-elevated">
+                    <div style="font-size: 14px; opacity: 0.9; margin-bottom: 12px;">今日业绩</div>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-num">12</div>
+                            <div class="stat-label">新增线索</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-num" style="color: #FFE066;">8</div>
+                            <div class="stat-label">进件数</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-num" style="color: #95DE64;">5</div>
+                            <div class="stat-label">放款数</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="section-title">快捷功能</div>
+                    <div class="icon-grid">
+                        <div class="icon-item" onclick="showScreen('scan')">
+                            <div class="icon-wrap" style="background: var(--teal-light); color: var(--teal);">📱</div>
+                            <div class="icon-name">扫码进件</div>
+                        </div>
+                        <div class="icon-item" onclick="showScreen('leads')">
+                            <div class="icon-wrap" style="background: var(--orange-light); color: var(--orange);">👥</div>
+                            <div class="icon-name">线索管理</div>
+                        </div>
+                        <div class="icon-item" onclick="showScreen('approval')">
+                            <div class="icon-wrap" style="background: var(--primary-light); color: var(--primary);">✅</div>
+                            <div class="icon-name">审批进度</div>
+                        </div>
+                        <div class="icon-item" onclick="showScreen('repayment')">
+                            <div class="icon-wrap" style="background: var(--success-light); color: var(--success);">💰</div>
+                            <div class="icon-name">还款登记</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="section-title">
+                        待办事项
+                        <span style="font-size: 13px; color: var(--text-tertiary);">共5项</span>
+                    </div>
+                    <div class="list-item" onclick="showScreen('detail')">
+                        <div class="icon-wrap" style="background: var(--warning-light); color: var(--warning); width: 36px; height: 36px; font-size: 20px; margin-right: 12px;">⏰</div>
+                        <div style="flex: 1;">
+                            <div style="font-size: 15px; color: var(--text-primary);">张三 - 面签预约</div>
+                            <div style="font-size: 13px; color: var(--text-tertiary);">今日 15:00</div>
+                        </div>
+                        <span class="badge badge-warning">待处理</span>
+                    </div>
+                    <div class="list-item" onclick="showScreen('detail')">
+                        <div class="icon-wrap" style="background: var(--purple-light); color: var(--purple); width: 36px; height: 36px; font-size: 20px; margin-right: 12px;">📍</div>
+                        <div style="flex: 1;">
+                            <div style="font-size: 15px; color: var(--text-primary);">李四 - GPS安装</div>
+                            <div style="font-size: 13px; color: var(--text-tertiary);">上海市浦东新区</div>
+                        </div>
+                        <span class="badge badge-warning">待安装</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tabbar">
+                <div class="tab-item active" onclick="showScreen('home')">
+                    <span>🏠</span>
+                    <div>首页</div>
+                </div>
+                <div class="tab-item" onclick="showScreen('leads')">
+                    <span>👥</span>
+                    <div>客户</div>
+                </div>
+                <div class="tab-item" onclick="showScreen('approval')">
+                    <span>✅</span>
+                    <div>审批</div>
+                </div>
+                <div class="tab-item" onclick="showScreen('repayment')">
+                    <span>💰</span>
+                    <div>贷后</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 2: 线索列表 -->
+        <div class="screen" id="screen-leads">
+            <div class="nav-bar">
+                <div class="nav-back" onclick="showScreen('home')">←</div>
+                <div class="nav-title">线索清单</div>
+                <div class="nav-more" onclick="showScreen('scan')">＋</div>
+            </div>
+
+            <div class="screen-content">
+                <div style="padding: 12px 16px;">
+                    <input type="text" placeholder="搜索客户姓名/手机号" class="input-field">
+                </div>
+
+                <div style="padding: 0 16px; margin-bottom: 12px; display: flex; gap: 8px;">
+                    <div class="badge badge-success" style="padding: 8px 16px; cursor: pointer;">全部 128</div>
+                    <div class="badge" style="background: var(--bg-input); color: var(--text-secondary); padding: 8px 16px; cursor: pointer;">待跟进 23</div>
+                    <div class="badge" style="background: var(--bg-input); color: var(--text-secondary); padding: 8px 16px; cursor: pointer;">跟进中 45</div>
+                </div>
+
+                <div class="card" style="margin-top: 0;">
+                    <div class="list-item" onclick="showScreen('detail')">
+                        <div class="avatar" style="background: linear-gradient(135deg, #FF6B35, #FF8C5A);">张</div>
+                        <div style="flex: 1;">
+                            <div style="font-size: 15px; font-weight: 600; color: var(--text-primary);">张三</div>
+                            <div style="font-size: 13px; color: var(--text-secondary);">138****8888 | 车贷业务</div>
+                            <div style="font-size: 12px; color: var(--text-tertiary); margin-top: 4px;">最后跟进：2小时前</div>
+                        </div>
+                        <span class="badge badge-orange">待跟进</span>
+                    </div>
+                    <div class="list-item" onclick="showScreen('detail')">
+                        <div class="avatar" style="background: linear-gradient(135deg, #1677FF, #40A9FF);">李</div>
+                        <div style="flex: 1;">
+                            <div style="font-size: 15px; font-weight: 600; color: var(--text-primary);">李四</div>
+                            <div style="font-size: 13px; color: var(--text-secondary);">139****6666 | 房贷业务</div>
+                            <div style="font-size: 12px; color: var(--text-tertiary); margin-top: 4px;">最后跟进：昨天</div>
+                        </div>
+                        <span class="badge badge-blue">跟进中</span>
+                    </div>
+                    <div class="list-item" onclick="showScreen('detail')">
+                        <div class="avatar" style="background: linear-gradient(135deg, #52C41A, #73D13D);">王</div>
+                        <div style="flex: 1;">
+                            <div style="font-size: 15px; font-weight: 600; color: var(--text-primary);">王五</div>
+                            <div style="font-size: 13px; color: var(--text-secondary);">137****5555 | 信用贷</div>
+                            <div style="font-size: 12px; color: var(--text-tertiary); margin-top: 4px;">最后跟进：3天前</div>
+                        </div>
+                        <span class="badge badge-success">已完成</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tabbar">
+                <div class="tab-item" onclick="showScreen('home')">
+                    <span>🏠</span>
+                    <div>首页</div>
+                </div>
+                <div class="tab-item active" onclick="showScreen('leads')">
+                    <span>👥</span>
+                    <div>客户</div>
+                </div>
+                <div class="tab-item" onclick="showScreen('approval')">
+                    <span>✅</span>
+                    <div>审批</div>
+                </div>
+                <div class="tab-item" onclick="showScreen('repayment')">
+                    <span>💰</span>
+                    <div>贷后</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 3: 扫码进件 -->
+        <div class="screen" id="screen-scan">
+            <div class="nav-bar primary">
+                <div class="nav-back" onclick="showScreen('home')" style="color: #fff;">←</div>
+                <div class="nav-title">扫码进件</div>
+                <div class="nav-more" style="color: #fff;">···</div>
+            </div>
+
+            <div class="screen-content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px;">
+                <div class="card" style="width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 300px; border: 2px dashed var(--border);">
+                    <div style="font-size: 64px; margin-bottom: 16px;">📱</div>
+                    <div style="font-size: 16px; color: var(--text-primary); font-weight: 600; margin-bottom: 8px;">扫描客户身份证</div>
+                    <div style="font-size: 14px; color: var(--text-secondary); margin-bottom: 24px; text-align: center;">自动识别身份信息，快速创建进件</div>
+                    <button class="btn btn-primary" style="width: 140px;" onclick="showScreen('loan-form')">开始扫描</button>
+                </div>
+                <div style="width: 100%; margin-top: 20px;">
+                    <button class="btn btn-outline" onclick="showScreen('loan-form')">手动录入信息</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 4: 进件表单 -->
+        <div class="screen" id="screen-loan-form">
+            <div class="nav-bar primary">
+                <div class="nav-back" onclick="showScreen('scan')" style="color: #fff;">←</div>
+                <div class="nav-title">进件资料</div>
+                <div class="nav-more" style="color: #fff;">
+                    <span class="btn-text" onclick="showScreen('upload')">下一步</span>
+                </div>
+            </div>
+
+            <div class="screen-content">
+                <div class="form-section">
+                    <div class="form-header">基本信息</div>
+                    <div class="form-body">
+                        <div class="form-row">
+                            <div>
+                                <label class="form-label">客户姓名</label>
+                                <input type="text" class="input-field" value="张三" placeholder="请输入姓名">
+                            </div>
+                            <div>
+                                <label class="form-label">身份证号</label>
+                                <input type="text" class="input-field" value="310104198501011234" placeholder="18位身份证">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div>
+                                <label class="form-label">手机号码</label>
+                                <input type="tel" class="input-field" value="138****8888" placeholder="11位手机号">
+                            </div>
+                            <div>
+                                <label class="form-label">婚姻状况</label>
+                                <select class="input-field">
+                                    <option>已婚</option>
+                                    <option>未婚</option>
+                                    <option>离异</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="form-header">贷款信息</div>
+                    <div class="form-body">
+                        <div class="form-row full">
+                            <label class="form-label">申请金额</label>
+                            <input type="number" class="input-field" value="150000" placeholder="请输入金额">
+                        </div>
+                        <div class="form-row">
+                            <div>
+                                <label class="form-label">贷款期限</label>
+                                <select class="input-field">
+                                    <option>12期</option>
+                                    <option>24期</option>
+                                    <option selected>36期</option>
+                                    <option>48期</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="form-label">还款方式</label>
+                                <select class="input-field">
+                                    <option>等额本息</option>
+                                    <option>等额本金</option>
+                                    <option>先息后本</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="info-box">
+                            <div style="font-size: 14px; color: var(--text-secondary);">预估月供：<span style="font-size: 20px; font-weight: 700; color: var(--primary);">¥4,687.50</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="form-header">车辆信息</div>
+                    <div class="form-body">
+                        <div class="form-row full">
+                            <label class="form-label">车辆品牌</label>
+                            <input type="text" class="input-field" value="奔驰" placeholder="请输入品牌">
+                        </div>
+                        <div class="form-row">
+                            <div>
+                                <label class="form-label">车辆型号</label>
+                                <input type="text" class="input-field" value="C260L" placeholder="请输入型号">
+                            </div>
+                            <div>
+                                <label class="form-label">车架号</label>
+                                <input type="text" class="input-field" value="WDD****8888" placeholder="17位VIN码">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 5: 上传资料 -->
+        <div class="screen" id="screen-upload">
+            <div class="nav-bar primary">
+                <div class="nav-back" onclick="showScreen('loan-form')" style="color: #fff;">←</div>
+                <div class="nav-title">上传资料</div>
+                <div class="nav-more" style="color: #fff;">
+                    <span class="btn-text" onclick="showScreen('pre-check')">提交审核</span>
+                </div>
+            </div>
+
+            <div class="screen-content">
+                <div class="form-section">
+                    <div class="form-header">身份证明</div>
+                    <div class="form-body">
+                        <div class="card" style="background: var(--success-light); padding: 12px; border-radius: var(--radius-sm); margin-bottom: 8px; display: flex; align-items: center;">
+                            <div style="font-size: 24px; margin-right: 12px;">✅</div>
+                            <div>
+                                <div style="font-size: 15px; font-weight: 600; color: var(--text-primary);">身份证正面</div>
+                                <div style="font-size: 12px; color: var(--success);">已上传</div>
+                            </div>
+                        </div>
+                        <div class="card" style="background: var(--success-light); padding: 12px; border-radius: var(--radius-sm); margin-bottom: 8px; display: flex; align-items: center;">
+                            <div style="font-size: 24px; margin-right: 12px;">✅</div>
+                            <div>
+                                <div style="font-size: 15px; font-weight: 600; color: var(--text-primary);">身份证反面</div>
+                                <div style="font-size: 12px; color: var(--success);">已上传</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="form-header">收入证明</div>
+                    <div class="form-body">
+                        <div class="card" style="background: var(--warning-light); padding: 12px; border-radius: var(--radius-sm); margin-bottom: 8px; display: flex; align-items: center;">
+                            <div style="font-size: 24px; margin-right: 12px;">📄</div>
+                            <div>
+                                <div style="font-size: 15px; font-weight: 600; color: var(--text-primary);">工资流水</div>
+                                <div style="font-size: 12px; color: var(--warning);">上传中 75%</div>
+                            </div>
+                        </div>
+                        <div class="card" style="background: var(--bg-input); padding: 12px; border-radius: var(--radius-sm); margin-bottom: 8px; display: flex; align-items: center; cursor: pointer;">
+                            <div style="font-size: 24px; margin-right: 12px;">➕</div>
+                            <div>
+                                <div style="font-size: 15px; font-weight: 600; color: var(--text-tertiary);">银行流水</div>
+                                <div style="font-size: 12px; color: var(--text-tertiary);">点击上传</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 6: 大数据预审 -->
+        <div class="screen" id="screen-pre-check">
+            <div class="nav-bar">
+                <div class="nav-back" onclick="showScreen('upload')">←</div>
+                <div class="nav-title">大数据预审</div>
+                <div class="nav-more">···</div>
+            </div>
+
+            <div class="screen-content">
+                <div class="card" style="text-align: center; margin-bottom: 16px;">
+                    <div style="width: 100px; height: 100px; margin: 0 auto 16px; position: relative;">
+                        <svg style="transform: rotate(-90deg); width: 100px; height: 100px;">
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="#E8E8E8" stroke-width="8"/>
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="#52C41A" stroke-width="8"
+                                stroke-dasharray="283" stroke-dashoffset="42" stroke-linecap="round"/>
+                        </svg>
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                            <div style="font-size: 28px; font-weight: 700; color: var(--success);">85</div>
+                            <div style="font-size: 11px; color: var(--text-secondary);">评分</div>
+                        </div>
+                    </div>
+                    <div style="font-size: 18px; font-weight: 700; color: var(--success); margin-bottom: 4px;">预审通过</div>
+                    <div style="font-size: 13px; color: var(--text-secondary);">综合风险评估：低风险</div>
+                </div>
+
+                <div class="card">
+                    <div class="form-header">风控检测结果</div>
+                    <div class="form-body">
+                        <div class="list-item">
+                            <div style="flex: 1;">
+                                <div style="font-size: 15px; color: var(--text-primary);">征信查询</div>
+                                <div style="font-size: 13px; color: var(--text-tertiary);">近3个月查询 3次</div>
+                            </div>
+                            <span class="badge badge-success">正常</span>
+                        </div>
+                        <div class="list-item">
+                            <div style="flex: 1;">
+                                <div style="font-size: 15px; color: var(--text-primary);">法院执行</div>
+                                <div style="font-size: 13px; color: var(--text-tertiary);">无被执行记录</div>
+                            </div>
+                            <span class="badge badge-success">正常</span>
+                        </div>
+                        <div class="list-item">
+                            <div style="flex: 1;">
+                                <div style="font-size: 15px; color: var(--text-primary);">多头借贷</div>
+                                <div style="font-size: 13px; color: var(--text-tertiary);">在途贷款 2笔</div>
+                            </div>
+                            <span class="badge badge-warning">需关注</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="form-header">审批建议</div>
+                    <div class="form-body">
+                        <div class="info-box" style="background: var(--success-light); border-left-color: var(--success);">
+                            <div style="font-size: 14px; color: var(--text-primary); margin-bottom: 4px;">💡 建议审批金额：¥150,000</div>
+                            <div style="font-size: 13px; color: var(--text-secondary);">客户资质良好，收入稳定，建议直接进入人工审批流程</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 7: 审批进度 -->
+        <div class="screen" id="screen-approval">
+            <div class="nav-bar">
+                <div class="nav-back" onclick="showScreen('home')">←</div>
+                <div class="nav-title">审批进度</div>
+                <div class="nav-more">···</div>
+            </div>
+
+            <div class="screen-content">
+                <div class="card" style="text-align: center; margin-bottom: 16px;">
+                    <div style="font-size: 20px; font-weight: 700; color: var(--primary); margin-bottom: 8px;">审批中</div>
+                    <div style="font-size: 13px; color: var(--text-secondary);">预计2-3个工作日完成</div>
+                </div>
+
+                <div class="card">
+                    <div class="form-header">审批流程</div>
+                    <div class="form-body">
+                        <div style="display: flex; margin-bottom: 20px;">
+                            <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--success); display: flex; align-items: center; justify-content: center; color: #fff; flex-shrink: 0;">✓</div>
+                            <div style="flex: 1; margin-left: 12px; padding-top: 2px;">
+                                <div style="font-size: 15px; font-weight: 600; color: var(--text-primary);">进件提交</div>
+                                <div style="font-size: 12px; color: var(--text-tertiary);">2026-03-30 14:20</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; margin-bottom: 20px;">
+                            <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--success); display: flex; align-items: center; justify-content: center; color: #fff; flex-shrink: 0;">✓</div>
+                            <div style="flex: 1; margin-left: 12px; padding-top: 2px;">
+                                <div style="font-size: 15px; font-weight: 600; color: var(--text-primary);">大数据预审</div>
+                                <div style="font-size: 12px; color: var(--text-tertiary);">2026-03-30 15:32</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; margin-bottom: 20px;">
+                            <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; color: #fff; flex-shrink: 0; font-size: 14px;">3</div>
+                            <div style="flex: 1; margin-left: 12px; padding-top: 2px;">
+                                <div style="font-size: 15px; font-weight: 600; color: var(--primary);">人工审批</div>
+                                <div style="font-size: 12px; color: var(--text-secondary);">审批中 · 审批人：李经理</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; margin-bottom: 20px;">
+                            <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--bg-input); display: flex; align-items: center; justify-content: center; color: var(--text-tertiary); flex-shrink: 0; font-size: 14px;">4</div>
+                            <div style="flex: 1; margin-left: 12px; padding-top: 2px;">
+                                <div style="font-size: 15px; font-weight: 600; color: var(--text-tertiary);">面签预约</div>
+                                <div style="font-size: 12px; color: var(--text-placeholder);">待开始</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; margin-bottom: 20px;">
+                            <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--bg-input); display: flex; align-items: center; justify-content: center; color: var(--text-tertiary); flex-shrink: 0; font-size: 14px;">5</div>
+                            <div style="flex: 1; margin-left: 12px; padding-top: 2px;">
+                                <div style="font-size: 15px; font-weight: 600; color: var(--text-tertiary);">GPS安装</div>
+                                <div style="font-size: 12px; color: var(--text-placeholder);">待开始</div>
+                            </div>
+                        </div>
+                        <div style="display: flex;">
+                            <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--bg-input); display: flex; align-items: center; justify-content: center; color: var(--text-tertiary); flex-shrink: 0; font-size: 14px;">6</div>
+                            <div style="flex: 1; margin-left: 12px; padding-top: 2px;">
+                                <div style="font-size: 15px; font-weight: 600; color: var(--text-tertiary);">放款</div>
+                                <div style="font-size: 12px; color: var(--text-placeholder);">待开始</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tabbar">
+                <div class="tab-item" onclick="showScreen('home')">
+                    <span>🏠</span>
+                    <div>首页</div>
+                </div>
+                <div class="tab-item" onclick="showScreen('leads')">
+                    <span>👥</span>
+                    <div>客户</div>
+                </div>
+                <div class="tab-item active" onclick="showScreen('approval')">
+                    <span>✅</span>
+                    <div>审批</div>
+                </div>
+                <div class="tab-item" onclick="showScreen('repayment')">
+                    <span>💰</span>
+                    <div>贷后</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 8: 还款管理 -->
+        <div class="screen" id="screen-repayment">
+            <div class="nav-bar">
+                <div class="nav-back" onclick="showScreen('home')">←</div>
+                <div class="nav-title">还款管理</div>
+                <div class="nav-more">···</div>
+            </div>
+
+            <div class="screen-content">
+                <div class="card-elevated">
+                    <div style="font-size: 13px; opacity: 0.9; margin-bottom: 8px;">本月待还</div>
+                    <div style="font-size: 36px; font-weight: 700;">¥234,375</div>
+                    <div style="font-size: 13px; opacity: 0.9; margin-top: 8px;">共 50 笔</div>
+                </div>
+
+                <div class="card">
+                    <div class="form-header">逾期监控</div>
+                    <div class="form-body">
+                        <div class="list-item" onclick="showScreen('overdue')">
+                            <div style="flex: 1;">
+                                <div style="font-size: 15px; font-weight: 600; color: var(--text-primary);">逾期1-7天</div>
+                                <div style="font-size: 13px; color: var(--text-secondary);">5笔 · ¥12,500</div>
+                            </div>
+                            <span class="badge badge-warning">5笔</span>
+                        </div>
+                        <div class="list-item" onclick="showScreen('overdue')">
+                            <div style="flex: 1;">
+                                <div style="font-size: 15px; font-weight: 600; color: var(--text-primary);">逾期8-30天</div>
+                                <div style="font-size: 13px; color: var(--text-secondary);">2笔 · ¥9,375</div>
+                            </div>
+                            <span class="badge badge-danger">2笔</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="form-header">今日还款</div>
+                    <div class="form-body">
+                        <div class="list-item">
+                            <div class="avatar" style="background: linear-gradient(135deg, #1677FF, #40A9FF);">张</div>
+                            <div style="flex: 1;">
+                                <div style="font-size: 15px; font-weight: 600; color: var(--text-primary);">张三</div>
+                                <div style="font-size: 13px; color: var(--text-secondary);">本期应还：¥4,687.50</div>
+                            </div>
+                            <span class="badge badge-success">已还款</span>
+                        </div>
+                        <div class="list-item">
+                            <div class="avatar" style="background: linear-gradient(135deg, #52C41A, #73D13D);">李</div>
+                            <div style="flex: 1;">
+                                <div style="font-size: 15px; font-weight: 600; color: var(--text-primary);">李四</div>
+                                <div style="font-size: 13px; color: var(--text-secondary);">本期应还：¥5,250.00</div>
+                            </div>
+                            <span class="badge badge-success">已还款</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tabbar">
+                <div class="tab-item" onclick="showScreen('home')">
+                    <span>🏠</span>
+                    <div>首页</div>
+                </div>
+                <div class="tab-item" onclick="showScreen('leads')">
+                    <span>👥</span>
+                    <div>客户</div>
+                </div>
+                <div class="tab-item" onclick="showScreen('approval')">
+                    <span>✅</span>
+                    <div>审批</div>
+                </div>
+                <div class="tab-item active" onclick="showScreen('repayment')">
+                    <span>💰</span>
+                    <div>贷后</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 9: 客户详情 -->
+        <div class="screen" id="screen-detail">
+            <div class="nav-bar primary">
+                <div class="nav-back" onclick="showScreen('leads')" style="color: #fff;">←</div>
+                <div class="nav-title">客户详情</div>
+                <div class="nav-more" style="color: #fff;">···</div>
+            </div>
+
+            <div class="screen-content">
+                <div style="text-align: center; padding: 24px 16px;">
+                    <div class="avatar avatar-lg" style="background: linear-gradient(135deg, #FF6B35, #FF8C5A); width: 80px; height: 80px; font-size: 32px; margin: 0 auto 12px;">张</div>
+                    <div style="font-size: 20px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px;">张三</div>
+                    <div style="font-size: 14px; color: var(--text-secondary); margin-bottom: 16px;">138****8888</div>
+                    <div>
+                        <span class="badge badge-warning">待跟进</span>
+                        <span class="badge badge-blue" style="margin-left: 8px;">车贷业务</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="form-header">基本信息</div>
+                    <div class="form-body">
+                        <div class="list-item">
+                            <div style="width: 80px; font-size: 14px; color: var(--text-secondary);">身份证号</div>
+                            <div style="flex: 1; font-size: 14px; color: var(--text-primary);">310104198501011234</div>
+                        </div>
+                        <div class="list-item">
+                            <div style="width: 80px; font-size: 14px; color: var(--text-secondary);">婚姻状况</div>
+                            <div style="flex: 1; font-size: 14px; color: var(--text-primary);">已婚</div>
+                        </div>
+                        <div class="list-item">
+                            <div style="width: 80px; font-size: 14px; color: var(--text-secondary);">联系地址</div>
+                            <div style="flex: 1; font-size: 14px; color: var(--text-primary);">上海市浦东新区</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="form-header">贷款信息</div>
+                    <div class="form-body">
+                        <div class="list-item">
+                            <div style="width: 80px; font-size: 14px; color: var(--text-secondary);">申请金额</div>
+                            <div style="flex: 1; font-size: 14px; font-weight: 600; color: var(--text-primary);">¥150,000</div>
+                        </div>
+                        <div class="list-item">
+                            <div style="width: 80px; font-size: 14px; color: var(--text-secondary);">贷款期限</div>
+                            <div style="flex: 1; font-size: 14px; color: var(--text-primary);">36期</div>
+                        </div>
+                        <div class="list-item">
+                            <div style="width: 80px; font-size: 14px; color: var(--text-secondary);">车辆型号</div>
+                            <div style="flex: 1; font-size: 14px; color: var(--text-primary);">奔驰 C260L</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="form-header">跟进记录</div>
+                    <div class="form-body">
+                        <div style="display: flex; margin-bottom: 16px;">
+                            <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--primary); flex-shrink: 0; margin-top: 4px;"></div>
+                            <div style="flex: 1; margin-left: 12px;">
+                                <div style="font-size: 15px; color: var(--text-primary); margin-bottom: 4px;">电话沟通 - 意向强烈</div>
+                                <div style="font-size: 12px; color: var(--text-tertiary);">2026-04-01 14:20</div>
+                            </div>
+                        </div>
+                        <div style="display: flex;">
+                            <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--text-tertiary); flex-shrink: 0; margin-top: 4px;"></div>
+                            <div style="flex: 1; margin-left: 12px;">
+                                <div style="font-size: 15px; color: var(--text-primary); margin-bottom: 4px;">添加线索 - 网络渠道</div>
+                                <div style="font-size: 12px; color: var(--text-tertiary);">2026-03-28 10:30</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="padding: 16px;">
+                    <button class="btn btn-primary" style="margin-bottom: 12px;" onclick="showScreen('scan')">立即进件</button>
+                    <button class="btn btn-outline">添加跟进记录</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screen 10: 逾期详情 -->
+        <div class="screen" id="screen-overdue">
+            <div class="nav-bar">
+                <div class="nav-back" onclick="showScreen('repayment')">←</div>
+                <div class="nav-title">逾期详情</div>
+                <div class="nav-more">···</div>
+            </div>
+
+            <div class="screen-content">
+                <div class="card">
+                    <div class="form-header">催收记录</div>
+                    <div class="form-body">
+                        <div style="display: flex; margin-bottom: 16px;">
+                            <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--danger); flex-shrink: 0; margin-top: 4px;"></div>
+                            <div style="flex: 1; margin-left: 12px;">
+                                <div style="font-size: 15px; color: var(--text-primary); margin-bottom: 4px;">电话催收 - 未接通</div>
+                                <div style="font-size: 12px; color: var(--text-tertiary);">2026-04-01 09:30</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; margin-bottom: 16px;">
+                            <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--warning); flex-shrink: 0; margin-top: 4px;"></div>
+                            <div style="flex: 1; margin-left: 12px;">
+                                <div style="font-size: 15px; color: var(--text-primary); margin-bottom: 4px;">短信提醒</div>
+                                <div style="font-size: 12px; color: var(--text-tertiary);">2026-03-31 10:00</div>
+                            </div>
+                        </div>
+                        <div style="display: flex;">
+                            <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--success); flex-shrink: 0; margin-top: 4px;"></div>
+                            <div style="flex: 1; margin-left: 12px;">
+                                <div style="font-size: 15px; color: var(--text-primary); margin-bottom: 4px;">系统自动提醒</div>
+                                <div style="font-size: 12px; color: var(--text-tertiary);">2026-03-30 08:00</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="form-header">客户信息</div>
+                    <div class="form-body">
+                        <div style="display: flex; align-items: center; margin-bottom: 16px;">
+                            <div class="avatar" style="background: linear-gradient(135deg, #FF6B35, #FF8C5A); margin-right: 12px;">赵</div>
+                            <div>
+                                <div style="font-size: 16px; font-weight: 600; color: var(--text-primary);">赵六</div>
+                                <div style="font-size: 14px; color: var(--text-secondary);">138****1234</div>
+                            </div>
+                        </div>
+                        <div class="info-box" style="background: var(--danger-light); border-left-color: var(--danger);">
+                            <div style="font-size: 14px; color: var(--text-primary); margin-bottom: 4px;">⚠️ 逾期3天</div>
+                            <div style="font-size: 13px; color: var(--text-secondary);">应还金额：¥3,750.00</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="padding: 16px;">
+                    <button class="btn btn-primary" style="margin-bottom: 12px;">立即催收</button>
+                    <button class="btn btn-outline">联系客户</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showScreen(screenId) {
+            document.querySelectorAll('.screen').forEach(screen => {
+                screen.classList.remove('active');
+            });
+            const targetScreen = document.getElementById('screen-' + screenId);
+            if (targetScreen) {
+                targetScreen.classList.add('active');
+                targetScreen.classList.add('fade-in');
+                setTimeout(() => {
+                    targetScreen.classList.remove('fade-in');
+                }, 300);
+            }
+
+            // 更新底部TabBar选中状态
+            document.querySelectorAll('.tab-item').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            const tabMapping = {
+                'home': 0,
+                'leads': 1,
+                'approval': 2,
+                'repayment': 3
+            };
+            if (tabMapping[screenId] !== undefined) {
+                const tabs = document.querySelectorAll('.tab-item');
+                if (tabs[tabMapping[screenId]]) {
+                    tabs[tabMapping[screenId]].classList.add('active');
+                }
+            }
+        }
+    </script>
+</body>
+</html>
